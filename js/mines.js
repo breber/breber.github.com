@@ -139,7 +139,7 @@ function newGame() {
 			sessionStorage['cell'+i+''+j+'state'] = '';
 		}
 	}
-	$.getJSON('/getminedata', function(e){
+	$.getJSON('http://brian-reber.appspot.com/getminedata', function(e){
 		var div = $('#text');
 		div.html("<table>");
 		for (var i = 0; i < numRows; i++) {
