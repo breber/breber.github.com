@@ -11,7 +11,7 @@ $().ready(function(){
 	var panel = $('#panel');
 
 	var flagImage = new Image();
-	flagImage.src = "/images/Flag.gif";
+	flagImage.src = "images/Flag.gif";
 
 	$("#status").html('Waiting');
 
@@ -139,24 +139,108 @@ function newGame() {
 			sessionStorage['cell'+i+''+j+'state'] = '';
 		}
 	}
-	$.getJSON('http://brian-reber.appspot.com/getminedata', function(e){
-		var div = $('#text');
-		div.html("<table>");
-		for (var i = 0; i < numRows; i++) {
-			div.append('<tr>')
-			for (var j = 0; j < numCols; j++) {
-				$('#text').append("<td>("+i+","+j+")<br />"+e.locations[i][j].value + "</td>");
-				sessionStorage['cell'+i+''+j+'value'] = e.locations[i][j].value
-				sessionStorage['cell'+i+''+j+'state'] ='r';
-			}
-			div.append("</tr>");
-		}
-		div.append("</table>");
-		div.hide();
-	});
+	
+    var e = generateBoard(numRows, numCols);
+    
+    var div = $('#text');
+    var str = [];
+    str.push("<table id='test'>");
+    
+    for (var i = 0; i < numRows; i++) {
+        str.push('<tr>')
+        for (var j = 0; j < numCols; j++) {
+            str.push("<td>("+i+","+j+")<br />"+e.locations[i][j].value + "</td>");
+            sessionStorage['cell'+i+''+j+'value'] = e.locations[i][j].value
+            sessionStorage['cell'+i+''+j+'state'] ='r';
+        }
+        str.push("</tr>");
+    }
+    str.push("</table>");
+    
+    div.html(str.join());
+    div.hide();
+	
 
 	$("#status").html('Started');
 	sessionStorage['gameState'] = 's';
+};
+
+/// Generates a board of the given width and height
+function generateBoard(rows, cols) {
+    var toRet = {};
+    toRet.locations = [];
+    
+    // Initialize the locations array
+    for (var i = 0; i < cols; i++) {
+        toRet.locations[i] = [];
+        for (var j = 0; j < rows; j++) {
+            toRet.locations[i][j] = {};
+            toRet.locations[i][j].value = 0;
+        }
+    }
+    
+    // Generate the mine locations
+    var arr = [];
+    for (var i = 0; i < 9; i++) {
+        arr[i] = {};
+        arr[i].x = Math.floor(Math.random() * cols);
+        arr[i].y = Math.floor(Math.random() * rows);
+        
+        toRet.locations[arr[i].x][arr[i].y].value = "MINE";
+        
+        // We will increment the spaces surrounding the current location,
+        // if it isn't already a mine
+        
+        // Locations right above the current location
+        if ((arr[i].x - 1) > 0) {
+            // Right above
+            if (toRet.locations[arr[i].x - 1][arr[i].y].value !== "MINE") {
+                toRet.locations[arr[i].x - 1][arr[i].y].value++;
+            }
+
+            // Right above, to left
+            if ((arr[i].y - 1) > 0 && toRet.locations[arr[i].x - 1][arr[i].y - 1].value !== "MINE") {
+                toRet.locations[arr[i].x - 1][arr[i].y - 1].value++;
+            }
+            
+            // Right above, to right
+            if ((arr[i].y + 1) < rows && toRet.locations[arr[i].x - 1][arr[i].y + 1].value !== "MINE") {
+                toRet.locations[arr[i].x - 1][arr[i].y + 1].value++;
+            }
+        }
+        
+        // Locations on current row
+
+        // Right above, to left
+        if ((arr[i].y - 1) > 0 && toRet.locations[arr[i].x][arr[i].y - 1].value !== "MINE") {
+            toRet.locations[arr[i].x][arr[i].y - 1].value++;
+        }
+        
+        // Right above, to right
+        if ((arr[i].y + 1) < rows && toRet.locations[arr[i].x][arr[i].y + 1].value !== "MINE") {
+            toRet.locations[arr[i].x][arr[i].y + 1].value++;
+        }
+        
+        // Locations right below the current location
+        if ((arr[i].x + 1) < cols) {
+            // Right above
+            if (toRet.locations[arr[i].x + 1][arr[i].y].value !== "MINE") {
+                toRet.locations[arr[i].x + 1][arr[i].y].value++;
+            }
+
+            // Right above, to left
+            if ((arr[i].y - 1) > 0 && toRet.locations[arr[i].x + 1][arr[i].y - 1].value !== "MINE") {
+                toRet.locations[arr[i].x + 1][arr[i].y - 1].value++;
+            }
+            
+            // Right above, to right
+            if ((arr[i].y + 1) < rows && toRet.locations[arr[i].x + 1][arr[i].y + 1].value !== "MINE") {
+                toRet.locations[arr[i].x + 1][arr[i].y + 1].value++;
+            }
+        }
+    }
+
+    return toRet;
 };
 
 window.onunload = function() {
