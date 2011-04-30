@@ -157,7 +157,7 @@ function newGame() {
     }
     str.push("</table>");
     
-    div.html(str.join());
+    div.html(str.join(""));
     div.hide();
 	
 
@@ -192,14 +192,14 @@ function generateBoard(rows, cols) {
         // if it isn't already a mine
         
         // Locations right above the current location
-        if ((arr[i].x - 1) > 0) {
+        if ((arr[i].x - 1) >= 0) {
             // Right above
             if (toRet.locations[arr[i].x - 1][arr[i].y].value !== "MINE") {
                 toRet.locations[arr[i].x - 1][arr[i].y].value++;
             }
 
             // Right above, to left
-            if ((arr[i].y - 1) > 0 && toRet.locations[arr[i].x - 1][arr[i].y - 1].value !== "MINE") {
+            if ((arr[i].y - 1) >= 0 && toRet.locations[arr[i].x - 1][arr[i].y - 1].value !== "MINE") {
                 toRet.locations[arr[i].x - 1][arr[i].y - 1].value++;
             }
             
@@ -212,7 +212,7 @@ function generateBoard(rows, cols) {
         // Locations on current row
 
         // Right above, to left
-        if ((arr[i].y - 1) > 0 && toRet.locations[arr[i].x][arr[i].y - 1].value !== "MINE") {
+        if ((arr[i].y - 1) >= 0 && toRet.locations[arr[i].x][arr[i].y - 1].value !== "MINE") {
             toRet.locations[arr[i].x][arr[i].y - 1].value++;
         }
         
@@ -229,7 +229,7 @@ function generateBoard(rows, cols) {
             }
 
             // Right above, to left
-            if ((arr[i].y - 1) > 0 && toRet.locations[arr[i].x + 1][arr[i].y - 1].value !== "MINE") {
+            if ((arr[i].y - 1) >= 0 && toRet.locations[arr[i].x + 1][arr[i].y - 1].value !== "MINE") {
                 toRet.locations[arr[i].x + 1][arr[i].y - 1].value++;
             }
             
