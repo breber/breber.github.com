@@ -10,7 +10,7 @@
 
 a:link,a:visited,a:active {
 	text-decoration: none;
-	color: #616536;
+	color: #052C6E;
 }
 
 a:hover {
@@ -19,7 +19,7 @@ a:hover {
 
 body {
 	font-family: "Helvetica", Veranda, Sans-Serif;
-	background: #31B96E;
+	background: #1049A9;
 }
 
 .imagecenter {
@@ -55,9 +55,8 @@ div {
 	padding-left: 15px;
 	padding-bottom: 15px;
 	padding-right: 15px;
-	/*margin-left: 1em;	*/
-	border: 2px solid #616536;
-	background: #A4E666;
+	border: 2px solid #4479D4;
+	background: #6A92D4;
 	float: left;
 	width: 75%;
 }
@@ -71,8 +70,8 @@ div {
 }
 
 .navbar {
-	border: 2px solid #616536;
-	background: #A4E666;
+	border: 2px solid #4479D4;
+	background: #6A92D4;
 	padding: 20px;
 	margin: 0 15px;
 }
