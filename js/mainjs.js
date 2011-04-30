@@ -51,7 +51,7 @@ $().ready(function(){
     rightText.push("</li>");
     rightText.push("</ul>");
     rightText.push("</div>");
-    rightText.push("<div style='text-align: center'><p>Copyright &copy;<br /> Brian Reber, 2011</p></div>");
+    rightText.push("<div style='text-align: center'><p>Copyright &copy;<br /> Brian Reber, " + new Date().getFullYear() + "</p></div>");
     
     $("div#right").html(rightText.join(""));
 
