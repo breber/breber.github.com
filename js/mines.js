@@ -73,7 +73,7 @@ $().ready(function(){
 	}
 });
 
-function setUpPanel(){
+function setUpPanel() {
 	var graph = document.getElementById('panel');
 	var context = graph.getContext('2d');
 	context.fillStyle = "rgb(0,0,0)";
@@ -183,8 +183,14 @@ function generateBoard(rows, cols) {
     var arr = [];
     for (var i = 0; i < 9; i++) {
         arr[i] = {};
-        arr[i].x = Math.floor(Math.random() * cols);
-        arr[i].y = Math.floor(Math.random() * rows);
+
+        // If there is already a MINE in the chosen location,
+        // continue to generate random locations until we find
+        // one that isn't full of a mine
+        do {
+            arr[i].x = Math.floor(Math.random() * cols);
+            arr[i].y = Math.floor(Math.random() * rows);
+        } while (toRet.locations[arr[i].x][arr[i].y].value !== "MINE");
         
         toRet.locations[arr[i].x][arr[i].y].value = "MINE";
         
