@@ -1,23 +1,12 @@
 // Switch to mobile view if the user agent indicates
 // they are on a mobile platform
 $().ready(function switchMobile() {
-	var iPhone = "iphone";
-	var iPod = "ipod";
-	var android = "android";
 	var uagent = navigator.userAgent.toLowerCase();
 
-	function detectIphoneOrIpod() {
-		if (uagent.search(iPhone) > -1) return true;
-		if (uagent.search(iPod) > -1) return true;
-		return false;
-	};
-	function detectAndroid() {
-		if (uagent.search(android) > -1) return true;
-		return false;
-	};
 	function checkBrowserMobile() {
-		return detectIphoneOrIpod() || detectAndroid();
+		return (uagent.search("iphone") > -1) || (uagent.search("ipod") > -1) || (uagent.search("android") > -1);
 	};
+    
 	if (checkBrowserMobile()) {
 		window.location += "/mobile/mobile.html";
 	}
