@@ -26,7 +26,7 @@ $().ready(function(){
     rightText.push("<ul>");
     rightText.push("<li><a href='agendawidget.html'>Android Agenda Widget</a></li>");
     rightText.push("<li><a href='https://github.com/breber/CyRide'>CyRide for Android</a></li>");
-    rightText.push("<li><a href='http://code.google.com/p/android-number-guess'>Android Number Guess</a></li>");
+    rightText.push("<li><a href='https://github.com/breber/Number-Guess'>Android Number Guess</a></li>");
     rightText.push("<li><a href='http://home.engineering.iastate.edu/~breber/Minesweeper/minesweeper.html'>Minesweeper</a></li>");
     rightText.push("<li><a href='http://home.engineering.iastate.edu/~breber/TomcatAnalysis/Tomcat.html'>Tomcat Analysis</a></li>");
     rightText.push("<li><a href='http://code.google.com/p/iphone-motion-unlock'>iPhone Motion Unlock</a></li>");
@@ -66,7 +66,7 @@ $().ready(function(){
 				"$('li#"+id+" ul').hide(500);}", 2000);
 	});
     
-    $("div#topNav").html("<a href='index.html'>About the Site</a><span class='spacer'></span>|<span class='spacer'></span><a href='aboutme.html'>About Me</a><span class='spacer'></span>|<span	class='spacer'></span><a href='languages.html'>Languages</a><span class='spacer'></span>|<span class='spacer'></span><a href='platforms.html'>Platforms</a><span class='spacer'></span>|<span class='spacer'></span><a href='androidmarket.html'>Visit Me on the Android Market!</a>");
+    $("div#topNav").html("<a href='index.html'>About the Site</a><span class='spacer'></span>|<span class='spacer'></span><a href='aboutme.html'>About Me</a><span class='spacer'></span>|<span class='spacer'></span><a href='languages.html'>Languages</a><span class='spacer'></span>|<span class='spacer'></span><a href='platforms.html'>Platforms</a><span class='spacer'></span>|<span class='spacer'></span><a href='androidmarket.html'>Visit Me on the Android Market!</a>");
 });
 
 function setStorage(id, value) {
