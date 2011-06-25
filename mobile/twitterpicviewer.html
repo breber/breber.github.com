@@ -6,51 +6,46 @@
 <link rel="stylesheet" href="../css/handheld.css" />
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
 <script src="../js/jquery.min.js"></script>
-<script	src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
 </head>
 <body>
-	<div data-role="page" data-theme="b" id="jqm-home">
+	<div data-role="page" data-theme="a" id="jqm-home">
 		<div data-role="header" class="ui-bar-a ui-header" role="banner">
-			<a href="#" onclick="$.mobile.changePage('mobile.html', 'slide');"
+			<a href="#" onclick="$.mobile.changePage('mobile.html', { transition:'slide', reverse: true });"
 				class="ui-btn-left ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-down-a ui-btn-up-a"
-				data-icon="arrow-l" data-theme="a"><span
-				class="ui-btn-inner ui-btn-corner-all"><span
-					class="ui-btn-text">Back</span><span
-					class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
-			</span>
+				data-icon="arrow-l" data-theme="a">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="ui-btn-text">Back</span>
+					<span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
+				</span>
 			</a>
-			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Android
-				Widgets</h1>
+			<h1 class="ui-title" tabindex="0" role="heading">Twitter Pic Viewer for Android</h1>
 		</div>
-		<div data-role="content">
-				<p>
-					<b>Background</b>: Up until recently, the Twitter for Android app
-					didn't have support for viewing images from popular image hosting
-					sites such as Twitpic, YFrog, Plixi etc. It was frustrating to
-					click on a link to an image, and be brought to the web browser to
-					view the image. Oftentimes, the website it brought you to was not
-					the mobile site, which only made the problem worse. I wanted to be
-					able to view the images in a native app, without having to go to
-					the web browser. In addition, I only wanted to see the image - the
-					other information provided on the sites (like comments, pic views
-					etc) was irrelevent.
-				</p>
-
-				<p>
-					<b>Purpose</b>: To be able to view tweeted pictures in a native
-					image viewer on the Android platform
-				</p>
-
-				<p>
-					<b>Support</b>: Currently, this app supports TwitPic, YFrog, Plixi,
-					and PicPlz images. I will be adding support for other services as I
-					run into the need for them.
-				</p>
-
-				<p>
-					<b>Source</b>: <a href="https://github.com/breber/TwitterPicViewer">Available
-						Here</a>
-				</p>
+		<div data-role="content" data-theme="a">
+			<p>
+				<b>Background</b>: Up until recently, the Twitter for Android app
+				didn't have support for viewing images from popular image hosting
+				sites such as Twitpic, YFrog, Plixi etc. It was frustrating to
+				click on a link to an image, and be brought to the web browser to
+				view the image. Oftentimes, the website it brought you to was not
+				the mobile site, which only made the problem worse. I wanted to be
+				able to view the images in a native app, without having to go to
+				the web browser. In addition, I only wanted to see the image - the
+				other information provided on the sites (like comments, pic views
+				etc) was irrelevent.
+			</p>
+			<p>
+				<b>Purpose</b>: To be able to view tweeted pictures in a native
+				image viewer on the Android platform
+			</p>
+			<p>
+				<b>Support</b>: Currently, this app supports TwitPic, YFrog, Plixi,
+				and PicPlz images. I will be adding support for other services as I
+				run into the need for them.
+			</p>
+			<p>
+				<b>Source</b>: <a href="https://github.com/breber/TwitterPicViewer">Available Here</a>
+			</p>
 		</div>
 	</div>
 </body>

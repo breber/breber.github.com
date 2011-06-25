@@ -9,57 +9,37 @@
 <script	src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
 </head>
 <body>
-	<div data-role="page" data-theme="b" id="jqm-home">
+	<div data-role="page" data-theme="a" id="jqm-home">
 		<div data-role="header" class="ui-bar-a ui-header" role="banner">
-			<a href="#" onclick="$.mobile.changePage('mobile.html', 'slide');"
+			<a href="#" onclick="$.mobile.changePage('mobile.html', { transition:'slide', reverse: true });"
 				class="ui-btn-left ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-down-a ui-btn-up-a"
-				data-icon="arrow-l" data-theme="a"><span
-				class="ui-btn-inner ui-btn-corner-all"><span
-					class="ui-btn-text">Back</span><span
-					class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
-			</span>
+				data-icon="arrow-l" data-theme="a">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="ui-btn-text">Back</span>
+					<span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
+				</span>
 			</a>
-			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Projects</h1>
+			<h1 class="ui-title" tabindex="0" role="heading">Projects</h1>
 		</div>
-		<div data-role="content">
-			<ul data-role="listview" data-inset="true" data-theme="c"
-				data-dividertheme="b">
+		<div data-role="content" data-theme="a">
+			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
 				<li data-role="list-divider">2011 Projects</li>
-				<li><a href="twitterpicviewer.html">Twitter Picture Viewer</a>
-				</li>
+				<li><a href="twitterpicviewer.html">Twitter Picture Viewer</a></li>
 			</ul>
-			<ul data-role="listview" data-inset="true" data-theme="c"
-				data-dividertheme="b">
+			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
 				<li data-role="list-divider">2010 Projects</li>
-				<li><a href="agendawidget.html">Android Agenda Widget</a>
-				</li>
-				<li><a href="https://github.com/breber/CyRide">CyRide for
-						Android</a>
-				</li>
-				<li><a href="http://code.google.com/p/android-number-guess">Android
-						Number Guess</a>
-				</li>
-				<li><a
-					href="http://home.engineering.iastate.edu/~breber/Minesweeper/minesweeper.html">Minesweeper</a>
-				</li>
-				<li><a
-					href="http://home.engineering.iastate.edu/~breber/TomcatAnalysis/Tomcat.html">Tomcat
-						Analysis</a>
-				</li>
-				<li><a href="http://code.google.com/p/iphone-motion-unlock">iPhone
-						Motion Unlock</a>
-				</li>
-				<li><a href="canvastest.html">HTML5 Canvas</a>
-				</li>
-				<li><a href="mines.html">HTML5 &amp; jQuery Minesweeper</a>
-				</li>
+				<li><a href="agendawidget.html">Android Agenda Widget</a></li>
+				<li><a href="https://github.com/breber/CyRide">CyRide for Android</a></li>
+				<li><a href="https://github.com/breber/Number-Guess">Android Number Guess</a></li>
+				<li><a href="http://home.engineering.iastate.edu/~breber/Minesweeper/minesweeper.html">Minesweeper</a></li>
+				<li><a href="http://home.engineering.iastate.edu/~breber/TomcatAnalysis/Tomcat.html">Tomcat Analysis</a></li>
+				<li><a href="http://code.google.com/p/iphone-motion-unlock">iPhone Motion Unlock</a></li>
+				<li><a href="canvastest.html">HTML5 Canvas</a></li>
+				<li><a href="mines.html">HTML5 &amp; jQuery Minesweeper</a></li>
 			</ul>
-			<ul data-role="listview" data-inset="true" data-theme="c"
-				data-dividertheme="b">
+			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
 				<li data-role="list-divider">2009 Projects</li>
-				<li><a href="http://breber.public.iastate.edu/250H">English
-						250H ePortfolio</a>
-				</li>
+				<li><a href="http://breber.public.iastate.edu/250H">English 250H ePortfolio</a></li>
 			</ul>
 		</div>
 	</div>

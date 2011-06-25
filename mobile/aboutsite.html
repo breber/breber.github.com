@@ -9,37 +9,43 @@
 <script	src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
 </head>
 <body>
-	<div data-role="page" data-theme="b" id="jqm-home">
+	<div data-role="page" data-theme="a" id="jqm-home">
 		<div data-role="header" class="ui-bar-a ui-header" role="banner">
-			<a href="#" onclick="$.mobile.changePage('mobile.html', 'slide');"
+			<a href="#" onclick="$.mobile.changePage('mobile.html', { transition:'slide', reverse: true });"
 				class="ui-btn-left ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-down-a ui-btn-up-a"
-				data-icon="arrow-l" data-theme="a"><span
-				class="ui-btn-inner ui-btn-corner-all"><span
-					class="ui-btn-text">Back</span><span
-					class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
-			</span>
+				data-icon="arrow-l" data-theme="a">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="ui-btn-text">Back</span>
+					<span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
+				</span>
 			</a>
-			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">About
-				the Site</h1>
+			<h1 class="ui-title" tabindex="0" role="heading">About the Site</h1>
 		</div>
-		<div data-role="content">
-			I am currently a Computer Engineering student at Iowa State
-			University. I created this website for fun, and to display some of
-			the projects I have worked on.<br /> <br /> I created this website
-			from scratch. I find leaning new programming languages interesting.
-			jQuery is a cool language that I recently started playing around with
-			- the menu on the side of the Desktop website view is animated using
-			jQuery. Also, this mobile view is created using jQuery Mobile.<br />
-
-			This site is mainly an HTML5, CSS3 and jQuery playground. The
-			majority of the features will not work unless you have a compliant
-			browser. All my testing is done in the latest dev version of Chrome,
-			but feel free to try the latest versions of Firefox and Safari - they
-			should work too for the most part (I guess you could use IE9, because
-			I hear that is mostly HTML5 compliant).<br /> Find me on <a
-				href="http://www.linkedin.com/in/breber">LinkedIn</a> or <a
-				href="http://twitter.com/brian_reber">Twitter</a>. <br /> Feel free
-			to visit any and all parts of the site. Enjoy!
+		<div data-role="content" data-theme="a">
+			<p>
+				I am currently a Computer Engineering student at Iowa State
+				University. I created this website for fun, and to display some of
+				the projects I have worked on.
+			</p>
+			<p>
+				I created this website from scratch. I find leaning new programming 
+				languages interesting.	jQuery is a cool language that I recently 
+				started playing around with	- the menu on the side of the Desktop 
+				website view is animated using jQuery. Also, this mobile view 
+				is created using jQuery Mobile.
+			</p>
+			<p>
+				This site is mainly an HTML5, CSS3 and jQuery playground. The
+				majority of the features will not work unless you have a compliant
+				browser. All my testing is done in the latest dev version of Chrome,
+				but feel free to try the latest versions of Firefox and Safari - they
+				should work too for the most part (I guess you could use IE9, because
+				I hear that is mostly HTML5 compliant).
+			</p>	
+			<p>
+				Find me on <a href="http://www.linkedin.com/in/breber">LinkedIn</a> 
+				or <a href="http://twitter.com/brian_reber">Twitter</a>.
+			</p>
 		</div>
 	</div>
 </body>
