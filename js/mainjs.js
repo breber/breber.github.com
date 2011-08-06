@@ -21,6 +21,7 @@ $().ready(function(){
     rightText.push("<li class='nav' id='2011'><b>2011</b>");
     rightText.push("<ul>");
     rightText.push("<li><a href='twitterpicviewer.html'>Twitter Picture Viewer</a></li>");
+    rightText.push("<li><a href='messaging.html'>Web-based SMS</a></li>");
     rightText.push("</ul></li>");
     rightText.push("<li class='nav' id='2010'><b>2010</b>");
     rightText.push("<ul>");
