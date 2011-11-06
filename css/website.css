@@ -1,0 +1,74 @@
+body {
+	height: 100%;
+	display:table;
+	margin: 8px;
+    font-family: "Helvetica", Veranda, Sans-Serif;
+    font-size: small;
+	margin: 0px;
+}
+
+.right {
+	width: 250px;
+	display: table-cell;
+	height: 100%;
+	float: left;
+}
+
+.left {
+	display: table-cell;
+	vertical-align: top;
+	height: 100%;
+    width: 100%;
+	padding: 0 15px 15px 15px;
+}
+
+.wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.editer {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#editer {
+    width: 100%;
+    height: 100%;
+    font-family: "Courier";
+    display: table-row;
+}
+
+.messages {
+    height: 50px;
+    display: table-row;
+}
+
+#messages {
+    width: 100%;
+    height: 100%;
+}
+
+.registerTable {
+    width: 100%;
+    text-align: center;
+}
+
+.registerTable td {
+    font-family: "Courier";
+    font-size: small;
+}
+
+.registerTable tr:nth-child(even) {
+    background: #CCC;
+}
+
+.center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border: none;
+}
