@@ -3,14 +3,24 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/mips.js"></script>
 <link href="css/website.css" rel="stylesheet" type="text/css" />
-<link href="css/vs.css" rel="stylesheet" type="text/css" />
+<script src="codemirror/codemirror.js" type="text/javascript" charset="utf-8"></script>
+<script src="codemirror/mipsasm.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="codemirror/codemirror.css">
+<link rel="stylesheet" href="codemirror/default.css">
+<script>
+window.onload = function() {
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        lineNumbers: true
+    });
+};
+</script>
 </head>
 <body>
 <div class="left">
 
     <div class="wrapper">
-        <div class="editer">
-            <textarea id="editer"></textarea>
+        <div class="editor">
+            <textarea id="code" name="code"></textarea>
         </div>
         
         <div class="messages">
