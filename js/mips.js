@@ -1,242 +1,232 @@
-$().ready(function(){
-	// Set the representation to the previously selected representation
-	$("#representation").val(localStorage.getItem('representation'));
-
-	// Add handler for typing in the Decimal box
-	$("#decimal").keyup(function(e) {
-		performUpdate($("#decimal").val(), 'd');
-	});
-
-	// Add handler for changing the representation
-	$("#representation").change(function(e) {
-		localStorage.setItem('representation', $("#representation").val());
-		performUpdate($("#decimal").val(), 'd');
-	});
-});
+var registerKey     = "reg";
+var programCounter  = "pc";
 
 /**
- * Updates all relevant text boxes with their proper representations
- * 
- * @param decimal - the decimal representation to use
- * @param modifying - which representation is being typed in (so we don't 
- *					overwrite what the user is typing)
+ * Performs an add operation
  */
-function performUpdate(decimalVal, modifying) {
-	var num = new Number(decimalVal);
-	var type = $("#representation").val();
-	
-	if (decimalVal === "" || decimalVal === undefined || num === '0' || isNaN(num) || num === "") {
-		if (modifying === 'd') {
-			$("#hex").val("");
-			$("#binary").val("");
-		} else if (modifying === 'b') {
-			$("#decimal").val("");
-			$("#hex").val("");
-		} else if (modifying === 'x') {
-			$("#decimal").val("");
-			$("#binary").val("");
-		}
-	} else {
-		if (type === "signMag") {
-			// Sign and Magnitude 
-			if (modifying === 'd') {
-				$("#hex").val(num.toString(16));
-				$("#binary").val(num.toString(2));
-			} else if (modifying === 'b') {
-				$("#decimal").val(num.toString());
-				$("#hex").val(num.toString(16));
-			} else if (modifying === 'x') {
-				$("#decimal").val(num.toString());
-				$("#binary").val(num.toString(2));
-			}
-		} else if (type === "ones") {
-			// One's Complement
-			if (modifying === 'd') {
-				$("#hex").val(toHex1C(num));
-				$("#binary").val(toBin1C(num));
-			} else if (modifying === 'b') {
-				$("#decimal").val(num.toString());
-				$("#hex").val(toHex1C(num));
-			} else if (modifying === 'x') {
-				$("#decimal").val(num.toString());
-				$("#binary").val(toBin1C(num));
-			}
-		} else if (type === "twos") {
-			// Two's Complement
-			if (modifying === 'd') {
-				$("#hex").val(toHex2C(num));
-				$("#binary").val(toBin2C(num));
-			} else if (modifying === 'b') {
-				$("#decimal").val(num.toString());
-				$("#hex").val(toHex2C(num));
-			} else if (modifying === 'x') {
-				$("#decimal").val(num.toString());
-				$("#binary").val(toBin2C(num));
-			}
-		}
-	}
-};
-
-/**
- * Converts a decimal number into 1's Compliment Binary
- * 
- * @param decimal - the decimal number to convert
- * @return the 1's Compliment Binary representation of the
- * 		   given number
- */
-function toBin1C(decimal) {
-	if (decimal > 0) {
-		return padWithZeros(decimal.toString(2));
-	} else {
-		var magnitude = padWithZeros("0" + Math.abs(decimal).toString(2));
-		var toRet = [];
-		
-		for (var i = 0; i < magnitude.length; i++) {
-			if (magnitude.charAt(i) === '0') {
-				toRet.push('1');
-			} else {
-				toRet.push('0');
-			}
-		}
-		
-		return toRet.join("");
-	}
-};
-
-/**
- * Converts a decimal number into 2's Compliment Binary
- * 
- * @param decimal - the decimal number to convert
- * @return the 2's Compliment Binary representation of the
- * 		   given number
- */
-function toBin2C(decimal) {
-	if (decimal > 0) {
-		return padWithZeros(decimal.toString(2));
-	} else {
-		var oneComp = toBin1C(decimal);
-		var decimal = toDecimal(oneComp);
-		decimal += 1;
-		return decimal.toString("2");
-	}
-};
-
-/**
- * Converts a decimal number into 1's Compliment Hex
- * 
- * @param decimal - the decimal number to convert
- * @return the 1's Compliment Hexadecimal representation of the
- * 		   given number
- */
-function toHex1C(decimal) {
-	if (decimal > 0) {
-		return decimal.toString(16);
-	} else {
-		var oneCbin = toBin1C(decimal);
-		var toRet = [];
-		
-		for (var i = 0; i < oneCbin.length; i += 4) {
-			var tempVal = toDecimal(oneCbin.substring(i, i + 4));
-			toRet.push(tempVal.toString(16));
-		}
-		
-		return toRet.join("");
-	}
-};
-
-/**
- * Converts a decimal number into 2's Compliment Hex
- * 
- * @param decimal - the decimal number to convert
- * @return the 2's Compliment Hexadecimal representation of the
- * 		   given number
- */
-function toHex2C(decimal) {
-	if (decimal > 0) {
-		return decimal.toString(16);
-	} else {
-		var twoCbin = toBin2C(decimal);
-		var toRet = [];
-		
-		for (var i = 0; i < twoCbin.length; i += 4) {
-			var tempVal = toDecimal(twoCbin.substring(i, i + 4));
-			toRet.push(tempVal.toString(16));
-		}
-		
-		return toRet.join("");
-	}
-};
-
-/**
- * Converts a binary number into decimal
- * 
- * @param bin - the binary number to convert
- * @return the decimal equivalent (sign/magnitude representation)
- */
-function toDecimal(bin) {
-	var toRet = 0;
-	
-	for (var i = 0; i < bin.length; i++) {
-		if (bin.charAt(i) === '1') {
-			toRet += Math.pow(2, bin.length - i - 1);
-		}
-	}
-	
-	return toRet;
-};
-
-/**
- * Converts Hex to binary
- * 
- * @param hex - the hex number to convert
- * @return the padded binary value
- */
-function binFromHex(hex) {
-    var toRet = [];
+function add(a, b, dest) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getRegisterValues(registerKey + b);
     
-    for (var i = 0; i < hex.length; i++) {
-        var num = new Number(hex[i]);
-        
-        if (isNaN(num)) {
-            switch (hex[i]) {
-                case 'a': toRet.push("1010"); break;
-                case 'b': toRet.push("1011"); break;
-                case 'c': toRet.push("1100"); break;
-                case 'd': toRet.push("1101"); break;
-                case 'e': toRet.push("1110"); break;
-                case 'f': toRet.push("1111"); break;
-            };
-        } else {
-            toRet.push(padWithZeros(hex[i].toString(2)));
-        }
+    localStorage.setItem(registerKey + dest, iA + iB);
+};
+
+/**
+ * Performs an add immediate operation
+ */
+function addi(a, b, dest) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getImmediateValue(b);
+
+	localStorage.setItem(registerKey + dest, iA + iB);
+};
+
+/**
+ * Performs an add immediate unsigned operation
+ */
+function addiu(a, b, dest) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getImmediateValue(b);
+    
+	localStorage.setItem(registerKey + dest, iA + iB);
+};
+
+/**
+ * Performs an add unsigned operation
+ */
+function addu(a, b, dest) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getImmediateValue(b);
+
+	localStorage.setItem(registerKey + dest, iA + iB);
+};
+
+/**
+ * Performs an and operation
+ */
+function and(a, b, dest) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getRegisterValues(registerKey + b);
+
+	localStorage.setItem(registerKey + dest, iA & iB);
+};
+
+/**
+ * Performs an and immediate operation
+ */
+function andi(a, b, dest) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getImmediateValue(b);
+
+	localStorage.setItem(registerKey + dest, iA & iB);
+};
+
+/**
+ * Performs a branch if a == b
+ */
+function beq(a, b, target) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getRegisterValues(registerKey + b);
+    
+    if (iA === iB) {
+        branch(target);   
+    }
+};
+
+/**
+ * Performs a branch if a >= 0
+ */
+function bgez(a, target) {
+    var iA = getRegisterValues(registerKey + a);
+    
+    if (iA >== 0) {
+        branch(target); 
+    }
+};
+
+/**
+ * Performs a branch (and link) if a >= 0
+ */
+function bgezal(a, target) {
+    var iA = getRegisterValues(registerKey + a);
+    
+    if (iA >== 0) {
+        var currentPC = getRegisterValues(programCounter);
+        branch(target);
+        localStorage.setItem(registerKey + '31', currentPC); 
+    }
+};
+
+/**
+ * Performs a branch if a > 0
+ */
+function bgtz(a, target) {
+    var iA = getRegisterValues(registerKey + a);
+    
+    if (iA > 0) {
+        branch(target);
+    }
+};
+
+/**
+ * Performs a branch if a <= 0
+ */
+function blez(a, target) {
+    var iA = getRegisterValues(registerKey + a);
+    
+    if (iA <= 0) {
+        branch(target);
+    }
+};
+
+/**
+ * Performs a branch if a < 0
+ */
+function bltz(a, target) {
+    var iA = getRegisterValues(registerKey + a);
+    
+    if (iA < 0) {
+        branch(target);
+    }
+};
+
+/**
+ * Performs a branch (and link) if a < 0
+ */
+function bltzal(a, target) {
+    var iA = getRegisterValues(registerKey + a);
+    
+    if (iA < 0) {
+        var currentPC = getRegisterValues(programCounter);
+        branch(target);
+        localStorage.setItem(registerKey + '31', currentPC); 
+    }
+};
+
+/**
+ * Performs a branch if a != b
+ */
+function bne(a, b, target) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getRegisterValues(registerKey + b);
+    
+    if (iA !== iB) {
+        branch(target);
+    }
+};
+
+/**
+ * Performs an div operation
+ */
+function div(a, b, dest) {
+    var iA = getRegisterValues(registerKey + a);
+    var iB = getRegisterValues(registerKey + b);
+
+	localStorage.setItem(registerKey + dest, iA / iB);
+};
+
+/**
+ * Performs an jump operation
+ */
+function j(target) {
+    var immed = getImmediateValue(target);
+    var pc = getRegisterValues(programCounter);
+    var val = (pc & 0xf0000000) | (immed << 2)
+
+	localStorage.setItem(programCounter, val);
+};
+
+/**
+ * Performs an jump and link operation
+ */
+function jal(target) {
+    var immed = getImmediateValue(target);
+    var pc = getRegisterValues(programCounter);
+    var val = (pc & 0xf0000000) | (immed << 2)
+
+	localStorage.setItem(programCounter, val);
+    localStorage.setItem(registerKey + '31', pc); 
+};
+
+/**
+ * Performs an jump register operation
+ */
+function jr(a) {
+    var iA = getRegisterValues(registerKey + a);
+
+	localStorage.setItem(programCounter, iA);
+};
+
+/**
+ * Performs a branch.
+ *
+ * New PC = CurrentPC + target
+ */
+function branch(target) {
+    var currentPC = getRegisterValues(programCounter);
+    currentPC += target;
+    
+    localStorage.setItem(programCounter, currentPC);
+};
+
+function getRegisterValues(a) {
+    var iA = localStorage.getItem(a);
+    
+    if (iA === null) {
+        iA = 0;
+    } else if (typeof(iA) !== number) {
+        iA = new Number(iA);
     }
     
-    console.log(toRet.join(""));
-    
-    return toRet.join("");
+    return iA;
 };
 
-/**
- * Pads a binary number with zeros to the closest multiple of 4
- *		Ex: 10110 --> 00010110
- * 
- * @param bin - the binary number to convert
- * @return the padded binary value
- */
-function padWithZeros(bin) {
-	var toRet = bin;
-	
-	if (bin.length % 4 !== 0) {
-		var numZerosToAppend = 4 - (bin.length % 4);
-		toRet = [];
-		
-		for (var i = 0; i < numZerosToAppend; i++) {
-			toRet.push("0");
-		}
-		
-		toRet.push(bin);
-		toRet = toRet.join("");
+function getImmediateValue(a) {
+    var iA = a;
+        
+    if (a === "" || a === undefined || a === '0' || isNaN(a) || a === "") {
+        iA = 0;
 	}
-	
-	return toRet;
+    
+    return iA;
 };

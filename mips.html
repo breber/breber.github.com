@@ -1,8 +1,12 @@
 <html>
 <head>
+<title>MIPS Assembler</title>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/mips.js"></script>
+<script type="text/javascript" src="js/numbers.js"></script>
 <link href="css/website.css" rel="stylesheet" type="text/css" />
+
+<!-- Syntax Highlighting -->
 <script src="codemirror/codemirror.js" type="text/javascript" charset="utf-8"></script>
 <script src="codemirror/mipsasm.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="codemirror/codemirror.css">
@@ -17,8 +21,11 @@ window.onload = function() {
 </head>
 <body>
 <div class="left">
-
     <div class="wrapper">
+        <div class="toolbar">
+            <button id="runStep">Run Step</button>
+            <button id="runAll">Run</button>
+        </div>
         <div class="editor">
             <textarea id="code" name="code"></textarea>
         </div>
@@ -199,6 +206,17 @@ window.onload = function() {
         <td>pc</td>
         <td></td>
         <td>0</td>
+    </tr>
+    <tr>
+        <td class="footer">
+            <input type="radio" name="representation" value="binary" checked=true/> Binary
+        </td>
+        <td class="footer">
+            <input type="radio" name="representation" value="hex" /> Hex
+        </td>
+        <td class="footer">
+            <input type="radio" name="representation" value="decimal" /> Decimal
+        </td>
     </tr>
 </table>
 
