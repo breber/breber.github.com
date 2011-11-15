@@ -7,8 +7,9 @@ var programCounter  = "pc";
 function add(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getRegisterValues(registerKey + b);
-    
+	
     localStorage.setItem(registerKey + dest, iA + iB);
+	console.log("add " + dest + ", " + a + ", " + b + " = " + localStorage.getItem(registerKey + dest));
 };
 
 /**
@@ -19,6 +20,7 @@ function addi(a, b, dest) {
     var iB = getImmediateValue(b);
 
 	localStorage.setItem(registerKey + dest, iA + iB);
+	console.log("addi " + dest + ", " + a + ", " + b + " = " + localStorage.getItem(registerKey + dest));
 };
 
 /**
@@ -79,7 +81,7 @@ function beq(a, b, target) {
 function bgez(a, target) {
     var iA = getRegisterValues(registerKey + a);
     
-    if (iA >== 0) {
+    if (iA >= 0) {
         branch(target); 
     }
 };
@@ -90,7 +92,7 @@ function bgez(a, target) {
 function bgezal(a, target) {
     var iA = getRegisterValues(registerKey + a);
     
-    if (iA >== 0) {
+    if (iA >= 0) {
         var currentPC = getRegisterValues(programCounter);
         branch(target);
         localStorage.setItem(registerKey + '31', currentPC); 
@@ -207,6 +209,12 @@ function branch(target) {
     currentPC += target;
     
     localStorage.setItem(programCounter, currentPC);
+	
+	updateUI();
+};
+
+function incrementPC() {
+	branch(1);
 };
 
 function getRegisterValues(a) {
@@ -214,7 +222,7 @@ function getRegisterValues(a) {
     
     if (iA === null) {
         iA = 0;
-    } else if (typeof(iA) !== number) {
+    } else if (typeof(iA) !== Number) {
         iA = new Number(iA);
     }
     

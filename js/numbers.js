@@ -7,10 +7,9 @@
  */
 function getValue(decimalVal) {
 	var num = new Number(decimalVal);
-	var toRet = {
-        hex = 0,
-        bin = 0
-    };
+	var toRet = {};
+	toRet.hex = 0;
+    toRet.bin = 0;
     
 	if (decimalVal === "" || decimalVal === undefined || num === '0' || isNaN(num) || num === "") {
         toRet.hex = toHex2C(num);
