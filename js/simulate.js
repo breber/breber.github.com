@@ -15,19 +15,25 @@ $().ready(function() {
 		localStorage.clear();
 		localStorage.setItem(programCounter, 0);
 		
-		//localStorage.setItem(memKey + 0, 4);
-		//localStorage.setItem(memKey + 4, 5);
-		//localStorage.setItem(memKey + 8, -1);
-		//localStorage.setItem(memKey + 12, 15);
-		//localStorage.setItem(memKey + 16, 7);
+		localStorage.setItem(memKey + 0, 4);
+		localStorage.setItem(memKey + 4, 5);
+		localStorage.setItem(memKey + 8, -1);
+		localStorage.setItem(memKey + 12, 15);
+		localStorage.setItem(memKey + 16, 7);
 	});
 	
 	$("#runStep").click(function() {
 		var currentPC = getRegisterValues(programCounter);
 		if (currentPC < window.assembledInstructions.length) {
-			window.editor.setLineClass(new Number(currentPC), null);
-			window.editor.setLineClass(currentPC + 1, 'activeline');
-			window.assembledInstructions[currentPC]();
+            var prevLineNum = parseInt(localStorage.getItem("prevLineNum"));
+            localStorage.setItem("prevLineNum", window.assembledInstructions[currentPC + 1].lineNum);
+
+            if (!isNaN(prevLineNum)) {
+                window.editor.setLineClass(prevLineNum, null);
+            }
+                        
+			window.editor.setLineClass(window.assembledInstructions[currentPC + 1].lineNum, 'activeline');
+			window.assembledInstructions[currentPC].func();
 		} else {
 			$("#messages").append("Out of instructions\n");
 			$("#assemble").removeAttr("disabled");
@@ -58,25 +64,17 @@ $().ready(function() {
  * Essentially 'assembling' the assembly code
  */
 function parseInstructions(text) {
-	var end = text.search("\n");
-	if (end === -1) {
-		end = text.length;
-	}
-	if (text.length > 0) {
-		var line = text.substr(0, end);
-		
-		individualInstruction(line);
-		
-		if (end !== -1) {
-			parseInstructions(text.substr(end + 1));
-		}
-	}
+	var end = text.split("\n");
+
+    for (var i = 0; i < end.length; i++) {
+		individualInstruction(end[i], i);
+    }
 };
 
 /**
  * Parse a line of assembly code, and add it to our 'instruction memory'
  */
-function individualInstruction(line) {
+function individualInstruction(line, lineNum) {
 	// Remove comments...
 	line = line.replace(/#.+$/, '');
 	
@@ -99,57 +97,57 @@ function individualInstruction(line) {
 	}
 	
 	switch (tokens[0]) {
-		case "add" : window.assembledInstructions.push(function() { incrementPC(); add(tokens[2], tokens[3], tokens[1]); }); break;
-		case "addi" : window.assembledInstructions.push(function() { incrementPC(); addi(tokens[2], tokens[3], tokens[1]); }); break;
-		case "addiu" : window.assembledInstructions.push(function() { incrementPC(); addiu(tokens[2], tokens[3], tokens[1]); }); break;
-		case "addu" : window.assembledInstructions.push(function() { incrementPC(); addu(tokens[2], tokens[3], tokens[1]); }); break;
-		case "and" : window.assembledInstructions.push(function() { incrementPC(); and(tokens[2], tokens[3], tokens[1]); }); break;
-		case "andi" : window.assembledInstructions.push(function() { incrementPC(); andi(tokens[2], tokens[3], tokens[1]); }); break;
+		case "add" : window.assembledInstructions.push({func: function() { incrementPC(); add(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "addi" : window.assembledInstructions.push({func: function() { incrementPC(); addi(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "addiu" : window.assembledInstructions.push({func: function() { incrementPC(); addiu(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "addu" : window.assembledInstructions.push({func: function() { incrementPC(); addu(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "and" : window.assembledInstructions.push({func: function() { incrementPC(); and(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "andi" : window.assembledInstructions.push({func: function() { incrementPC(); andi(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
 		// Branches find Labels...
-		case "beq" : window.assembledInstructions.push(function() { incrementPC(); beq(tokens[1], tokens[2], getLabelLocation(tokens[3], true)); }); break;
-		case "bgez" : window.assembledInstructions.push(function() { incrementPC(); bgez(tokens[1], getLabelLocation(tokens[2], true)); }); break;
-		case "bgezal" : window.assembledInstructions.push(function() { incrementPC(); bgezal(tokens[1], getLabelLocation(tokens[2], true)); }); break;
-		case "bgtz" : window.assembledInstructions.push(function() { incrementPC(); bgtz(tokens[1], getLabelLocation(tokens[2], true)); }); break;
-		case "blez" : window.assembledInstructions.push(function() { incrementPC(); blez(tokens[1], getLabelLocation(tokens[2], true)); }); break;
+		case "beq" : window.assembledInstructions.push({func: function() { incrementPC(); beq(tokens[1], tokens[2], getLabelLocation(tokens[3], true)); }, lineNum: lineNum }); break;
+		case "bgez" : window.assembledInstructions.push({func: function() { incrementPC(); bgez(tokens[1], getLabelLocation(tokens[2], true)); }, lineNum: lineNum }); break;
+		case "bgezal" : window.assembledInstructions.push({func: function() { incrementPC(); bgezal(tokens[1], getLabelLocation(tokens[2], true)); }, lineNum: lineNum }); break;
+		case "bgtz" : window.assembledInstructions.push({func: function() { incrementPC(); bgtz(tokens[1], getLabelLocation(tokens[2], true)); }, lineNum: lineNum }); break;
+		case "blez" : window.assembledInstructions.push({func: function() { incrementPC(); blez(tokens[1], getLabelLocation(tokens[2], true)); }, lineNum: lineNum }); break;
 		// Pseudo Instruction...
-		case "blt" : window.assembledInstructions.push(function() { incrementPC(); blt(tokens[1], tokens[2], getLabelLocation(tokens[3], true)); }); break;
-		case "bltz" : window.assembledInstructions.push(function() { incrementPC(); bltz(tokens[1], getLabelLocation(tokens[2], true)); }); break;
-		case "bltzal" : window.assembledInstructions.push(function() { incrementPC(); bltzal(tokens[1], getLabelLocation(tokens[2], true)); }); break;
-		case "bne" : window.assembledInstructions.push(function() { incrementPC(); bne(tokens[1], tokens[2], getLabelLocation(tokens[3], true)); }); break;
-		case "div" : window.assembledInstructions.push(function() { incrementPC(); div(tokens[2], tokens[3], tokens[1]); }); break;
+		case "blt" : window.assembledInstructions.push({func: function() { incrementPC(); blt(tokens[1], tokens[2], getLabelLocation(tokens[3], true)); }, lineNum: lineNum }); break;
+		case "bltz" : window.assembledInstructions.push({func: function() { incrementPC(); bltz(tokens[1], getLabelLocation(tokens[2], true)); }, lineNum: lineNum }); break;
+		case "bltzal" : window.assembledInstructions.push({func: function() { incrementPC(); bltzal(tokens[1], getLabelLocation(tokens[2], true)); }, lineNum: lineNum }); break;
+		case "bne" : window.assembledInstructions.push({func: function() { incrementPC(); bne(tokens[1], tokens[2], getLabelLocation(tokens[3], true)); }, lineNum: lineNum }); break;
+		case "div" : window.assembledInstructions.push({func: function() { incrementPC(); div(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
 		// DIVU
-		case "j" : window.assembledInstructions.push(function() { incrementPC(); j(getLabelLocation(tokens[1], false)); }); break;
-		case "jal" : window.assembledInstructions.push(function() { incrementPC(); jal(getLabelLocation(tokens[1], false)); }); break;
-		case "jr" : window.assembledInstructions.push(function() { incrementPC(); jr(tokens[1]); }); break;
+		case "j" : window.assembledInstructions.push({func: function() { incrementPC(); j(getLabelLocation(tokens[1], false)); }, lineNum: lineNum }); break;
+		case "jal" : window.assembledInstructions.push({func: function() { incrementPC(); jal(getLabelLocation(tokens[1], false)); }, lineNum: lineNum }); break;
+		case "jr" : window.assembledInstructions.push({func: function() { incrementPC(); jr(tokens[1]); }, lineNum: lineNum }); break;
 		// LB
-		case "lb" : window.assembledInstructions.push(function() { incrementPC(); lb(tokens[2].substr(tokens[2].indexOf("(") + 1, tokens[2].indexOf(")") - 2), tokens[2].substr(0, tokens[2].indexOf("(")), tokens[1]); }); break;
-		case "lui" : window.assembledInstructions.push(function() { incrementPC(); lui(tokens[2], tokens[1]); }); break;
+		case "lb" : window.assembledInstructions.push({func: function() { incrementPC(); lb(tokens[2].substr(tokens[2].indexOf("(") + 1, tokens[2].indexOf(")") - 2), tokens[2].substr(0, tokens[2].indexOf("(")), tokens[1]); }, lineNum: lineNum }); break;
+		case "lui" : window.assembledInstructions.push({func: function() { incrementPC(); lui(tokens[2], tokens[1]); }, lineNum: lineNum }); break;
 		// LW
-		case "lw" : window.assembledInstructions.push(function() { incrementPC(); lw(tokens[2].substr(tokens[2].indexOf("(") + 1, tokens[2].indexOf(")") - 2), tokens[2].substr(0, tokens[2].indexOf("(")), tokens[1]); }); break;
-		case "mul" : window.assembledInstructions.push(function() { incrementPC(); mult(tokens[2], tokens[3], tokens[1]); }); break;
-		case "mult" : window.assembledInstructions.push(function() { incrementPC(); mult(tokens[2], tokens[3], tokens[1]); }); break;
+		case "lw" : window.assembledInstructions.push({func: function() { incrementPC(); lw(tokens[2].substr(tokens[2].indexOf("(") + 1, tokens[2].indexOf(")") - 2), tokens[2].substr(0, tokens[2].indexOf("(")), tokens[1]); }, lineNum: lineNum }); break;
+		case "mul" : window.assembledInstructions.push({func: function() { incrementPC(); mult(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "mult" : window.assembledInstructions.push({func: function() { incrementPC(); mult(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
 		// MULTU
-		case "or" : window.assembledInstructions.push(function() { incrementPC(); or(tokens[2], tokens[3], tokens[1]); }); break;
-		case "ori" : window.assembledInstructions.push(function() { incrementPC(); ori(tokens[2], tokens[3], tokens[1]); }); break;
+		case "or" : window.assembledInstructions.push({func: function() { incrementPC(); or(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "ori" : window.assembledInstructions.push({func: function() { incrementPC(); ori(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
 		// SB
-		case "sb" : window.assembledInstructions.push(function() { incrementPC(); sb(tokens[2].substr(tokens[2].indexOf("(") + 1, tokens[2].indexOf(")") - 2), tokens[2].substr(0, tokens[2].indexOf("(")), tokens[1]); }); break;
-		case "sll" : window.assembledInstructions.push(function() { incrementPC(); sll(tokens[2], tokens[3], tokens[1]); }); break;
-		case "sllv" : window.assembledInstructions.push(function() { incrementPC(); sllv(tokens[2], tokens[3], tokens[1]); }); break;
+		case "sb" : window.assembledInstructions.push({func: function() { incrementPC(); sb(tokens[2].substr(tokens[2].indexOf("(") + 1, tokens[2].indexOf(")") - 2), tokens[2].substr(0, tokens[2].indexOf("(")), tokens[1]); }, lineNum: lineNum }); break;
+		case "sll" : window.assembledInstructions.push({func: function() { incrementPC(); sll(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "sllv" : window.assembledInstructions.push({func: function() { incrementPC(); sllv(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
 		// SLT
 		// SLTI
 		// SLTIU
 		// SLTU
-		case "sra" : window.assembledInstructions.push(function() { incrementPC(); sra(tokens[2], tokens[3], tokens[1]); }); break;
-		case "srl" : window.assembledInstructions.push(function() { incrementPC(); srl(tokens[2], tokens[3], tokens[1]); }); break;
-		case "srlv" : window.assembledInstructions.push(function() { incrementPC(); srlv(tokens[2], tokens[3], tokens[1]); }); break;
-		case "sub" : window.assembledInstructions.push(function() { incrementPC(); sub(tokens[2], tokens[3], tokens[1]); }); break;
+		case "sra" : window.assembledInstructions.push({func: function() { incrementPC(); sra(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "srl" : window.assembledInstructions.push({func: function() { incrementPC(); srl(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "srlv" : window.assembledInstructions.push({func: function() { incrementPC(); srlv(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "sub" : window.assembledInstructions.push({func: function() { incrementPC(); sub(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
 		// SUBU
-		case "sw" : window.assembledInstructions.push(function() { incrementPC(); sw(tokens[2].substr(tokens[2].indexOf("(") + 1, tokens[2].indexOf(")") - 2), tokens[2].substr(0, tokens[2].indexOf("(")), tokens[1]); }); break;
-		case "xor" : window.assembledInstructions.push(function() { incrementPC(); xor(tokens[2], tokens[3], tokens[1]); }); break;
-		case "xori" : window.assembledInstructions.push(function() { incrementPC(); xori(tokens[2], tokens[3], tokens[1]); }); break;
+		case "sw" : window.assembledInstructions.push({func: function() { incrementPC(); sw(tokens[2].substr(tokens[2].indexOf("(") + 1, tokens[2].indexOf(")") - 2), tokens[2].substr(0, tokens[2].indexOf("(")), tokens[1]); }, lineNum: lineNum }); break;
+		case "xor" : window.assembledInstructions.push({func: function() { incrementPC(); xor(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
+		case "xori" : window.assembledInstructions.push({func: function() { incrementPC(); xori(tokens[2], tokens[3], tokens[1]); }, lineNum: lineNum }); break;
 		default : {
 			if (!(tokens[0] === null || "" === tokens[0])) {
-				window.assembledInstructions.push(function() { incrementPC(); });
+				window.assembledInstructions.push({func: function() { incrementPC(); }, lineNum: lineNum });
 				console.log("Unknown Instruction " + tokens[0]);
 			}
 		}
