@@ -15,6 +15,7 @@ $().ready(function() {
 		localStorage.clear();
 		localStorage.setItem(programCounter, 0);
 		
+        // Temporary memory - TODO: remove when a proper view for memory is created
 		localStorage.setItem(memKey + 0, 4);
 		localStorage.setItem(memKey + 4, 5);
 		localStorage.setItem(memKey + 8, -1);

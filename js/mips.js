@@ -2,6 +2,41 @@ var registerKey     = "reg";
 var programCounter  = "pc";
 var memKey          = "mem";
 
+var regNames = {
+    "zero" : "0",
+    "at"   : "1",
+    "v0"   : "2",
+    "v1"   : "3",
+    "a0"   : "4",
+    "a1"   : "5",
+    "a2"   : "6",
+    "a3"   : "7",
+    "t0"   : "8",
+    "t1"   : "9",
+    "t2"   : "10",
+    "t3"   : "11",
+    "t4"   : "12",
+    "t5"   : "13",
+    "t6"   : "14",
+    "t7"   : "15",
+    "s0"   : "16",
+    "s1"   : "17",
+    "s2"   : "18",
+    "s3"   : "19",
+    "s4"   : "20",
+    "s5"   : "21",
+    "s6"   : "22",
+    "s7"   : "23",
+    "t8"   : "24",
+    "t9"   : "25",
+    "k0"   : "26",
+    "k1"   : "27",
+    "gp"   : "28",
+    "sp"   : "29",
+    "fp"   : "30",
+    "ra"   : "31",
+};
+
 /**
  * Performs an add operation
  */
@@ -9,7 +44,7 @@ function add(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getRegisterValues(registerKey + b);
 	
-    localStorage.setItem(registerKey + dest, iA + iB);
+    localStorage.setItem(translateRegisterNames(dest), iA + iB);
 	console.log("add " + dest + ", " + a + ", " + b + " = " + localStorage.getItem(registerKey + dest));
 };
 
@@ -20,7 +55,7 @@ function addi(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getImmediateValue(b);
 
-	localStorage.setItem(registerKey + dest, iA + iB);
+	localStorage.setItem(translateRegisterNames(dest), iA + iB);
 	console.log("addi " + dest + ", " + a + ", " + b + " = " + localStorage.getItem(registerKey + dest));
 };
 
@@ -31,7 +66,7 @@ function addiu(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getImmediateValue(b);
     
-	localStorage.setItem(registerKey + dest, iA + iB);
+	localStorage.setItem(translateRegisterNames(dest), iA + iB);
 };
 
 /**
@@ -41,7 +76,7 @@ function addu(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getImmediateValue(b);
 
-	localStorage.setItem(registerKey + dest, iA + iB);
+	localStorage.setItem(translateRegisterNames(dest), iA + iB);
 };
 
 /**
@@ -51,7 +86,7 @@ function and(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getRegisterValues(registerKey + b);
 
-	localStorage.setItem(registerKey + dest, iA & iB);
+	localStorage.setItem(translateRegisterNames(dest), iA & iB);
 };
 
 /**
@@ -61,7 +96,7 @@ function andi(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getImmediateValue(b);
 
-	localStorage.setItem(registerKey + dest, iA & iB);
+	localStorage.setItem(translateRegisterNames(dest), iA & iB);
 };
 
 /**
@@ -177,7 +212,7 @@ function div(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getRegisterValues(registerKey + b);
 
-	localStorage.setItem(registerKey + dest, iA / iB);
+	localStorage.setItem(translateRegisterNames(dest), iA / iB);
 };
 
 /**
@@ -225,7 +260,7 @@ function lb(a, offset, dest) {
 	
 	iA += offset;
 	
-	localStorage.setItem(registerKey + dest, getMemoryValue(iA));
+	localStorage.setItem(translateRegisterNames(dest), getMemoryValue(iA));
 };
 
 /**
@@ -233,7 +268,7 @@ function lb(a, offset, dest) {
  */
 function lui(a, dest) {
     var iA = getImmediateValue(a);
-	localStorage.setItem(registerKey + dest, (iA << 16));
+	localStorage.setItem(translateRegisterNames(dest), (iA << 16));
 };
 
 /**
@@ -260,7 +295,7 @@ function lw(a, offset, dest) {
 	toStore |= (getMemoryValue(iA + 2) << 16);
 	toStore |= (getMemoryValue(iA + 3) << 24);
 	
-	localStorage.setItem(registerKey + dest, toStore);
+	localStorage.setItem(translateRegisterNames(dest), toStore);
 };
 
 /**
@@ -270,7 +305,7 @@ function mult(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getRegisterValues(registerKey + b);
 
-	localStorage.setItem(registerKey + dest, iA * iB);
+	localStorage.setItem(translateRegisterNames(dest), iA * iB);
 };
 
 /**
@@ -280,7 +315,7 @@ function or(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getRegisterValues(registerKey + b);
 
-	localStorage.setItem(registerKey + dest, iA | iB);
+	localStorage.setItem(translateRegisterNames(dest), iA | iB);
 };
 
 /**
@@ -290,7 +325,7 @@ function ori(a, b, dest) {
     var iA = getRegisterValues(registerKey + a);
     var iB = getImmediateValue(b);
 
-	localStorage.setItem(registerKey + dest, iA | iB);
+	localStorage.setItem(translateRegisterNames(dest), iA | iB);
 };
 
 /**
@@ -321,7 +356,7 @@ function sll(a, b, dest) {
 	var iA = getRegisterValues(registerKey + a);
 	var iB = getImmediateValue(b);
 	
-	localStorage.setItem(registerKey + dest, iA << iB);
+	localStorage.setItem(translateRegisterNames(dest), iA << iB);
 };
 
 /**
@@ -331,7 +366,7 @@ function sllv(a, b, dest) {
 	var iA = getRegisterValues(registerKey + a);
 	var iB = getRegisterValues(registerKey + b);
 	
-	localStorage.setItem(registerKey + dest, iA << iB);
+	localStorage.setItem(translateRegisterNames(dest), iA << iB);
 };
 
 /**
@@ -341,7 +376,7 @@ function sra(a, b, dest) {
 	var iA = getRegisterValues(registerKey + a);
 	var iB = getImmediateValue(b);
 	
-	localStorage.setItem(registerKey + dest, iA >> iB);
+	localStorage.setItem(translateRegisterNames(dest), iA >> iB);
 };
 
 /**
@@ -351,7 +386,7 @@ function srl(a, b, dest) {
 	var iA = getRegisterValues(registerKey + a);
 	var iB = getImmediateValue(b);
 	
-	localStorage.setItem(registerKey + dest, iA >>> iB);
+	localStorage.setItem(translateRegisterNames(dest), iA >>> iB);
 };
 
 /**
@@ -361,7 +396,7 @@ function srlv(a, b, dest) {
 	var iA = getRegisterValues(registerKey + a);
 	var iB = getRegisterValues(registerKey + b);
 	
-	localStorage.setItem(registerKey + dest, iA >>> iB);
+	localStorage.setItem(translateRegisterNames(dest), iA >>> iB);
 };
 
 /**
@@ -371,7 +406,7 @@ function sub(a, b, dest) {
 	var iA = getRegisterValues(registerKey + a);
 	var iB = getRegisterValues(registerKey + b);
 	
-	localStorage.setItem(registerKey + dest, iA - iB);
+	localStorage.setItem(translateRegisterNames(dest), iA - iB);
 };
 
 /**
@@ -407,7 +442,7 @@ function xor(a, b, dest) {
 	var iA = getRegisterValues(registerKey + a);
 	var iB = getRegisterValues(registerKey + b);
 	
-	localStorage.setItem(registerKey + dest, iA ^ iB);
+	localStorage.setItem(translateRegisterNames(dest), iA ^ iB);
 };
 
 /**
@@ -417,7 +452,7 @@ function xori(a, b, dest) {
 	var iA = getRegisterValues(registerKey + a);
 	var iB = getImmediateValue(b);
 	
-	localStorage.setItem(registerKey + dest, iA ^ iB);
+	localStorage.setItem(translateRegisterNames(dest), iA ^ iB);
 };
 
 /**
@@ -447,7 +482,9 @@ function incrementPC() {
 };
 
 function getRegisterValues(a) {
-    var iA = localStorage.getItem(a);
+    var aTemp = translateRegisterNames(a);
+
+    var iA = localStorage.getItem(aTemp);
     
     if (iA === null) {
         iA = 0;
@@ -456,6 +493,28 @@ function getRegisterValues(a) {
     }
     
     return iA;
+};
+
+/**
+ * Translate named retisters to their numerical register
+ */
+function translateRegisterNames(token) {
+    var toRet = token.replace(registerKey, "").replace(programCounter, "");
+
+    // We either have a programCounter or a null register
+    // Just return what we were given
+    if (toRet === null || "" === toRet) {
+        return token;
+    }
+
+    // If the token doesn't start with a number, we will
+    // try and translate it
+    if (isNaN(toRet[0])) {
+        return registerKey + regNames[toRet];
+    }
+    
+    // If it was a number, just return what we were given
+    return token;
 };
 
 function getImmediateValue(a) {
