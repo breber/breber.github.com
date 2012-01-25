@@ -4,10 +4,9 @@ google.setOnLoadCallback(theCallback);
 function theCallback() {
 	$.getJSON("http://apps.brianreber.com/getapps?callback=?", updateGraphs);
 	$.ajax("http://apps.brianreber.com/getapps", {
-			crossDomain:true, 
-			dataType: "jsonp", 
-			success: updateGraphs
-		}
+		crossDomain:true, 
+		dataType: "jsonp", 
+		success: updateGraphs
 	});
 };
 
