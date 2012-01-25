@@ -8,7 +8,7 @@ $().ready(function switchMobile() {
 	};
     
 	if (checkBrowserMobile()) {
-		window.location += "/mobile/mobile.html";
+		window.location += "http://m.brianreber.com";
 	}
 });
 
