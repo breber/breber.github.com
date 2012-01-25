@@ -1,5 +1,5 @@
 function getDataAndDrawGraphs(appName, rowNum) {
-	$.get("/getcounts?appName=" + appName,
+	$.get("http://apps.brianreber.com/getcounts?appName=" + appName,
 		function (data) {
 			var temp = [];
 	
@@ -18,7 +18,7 @@ function getDataAndDrawGraphs(appName, rowNum) {
 		}
 	);
 
-	$.get("/getratings?appName=" + appName, 
+	$.get("http://apps.brianreber.com/getratings?appName=" + appName, 
 		function (data) {
 			drawPieChart(data, rowNum);
 		}
