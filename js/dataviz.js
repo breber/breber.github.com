@@ -3,11 +3,6 @@ google.setOnLoadCallback(theCallback);
 
 function theCallback() {
 	$.getJSON("http://apps.brianreber.com/getapps?callback=?", updateGraphs);
-	$.ajax("http://apps.brianreber.com/getapps", {
-		crossDomain:true, 
-		dataType: "jsonp", 
-		success: updateGraphs
-	});
 };
 
 function getDataAndDrawGraphs(appName, rowNum) {
@@ -37,7 +32,8 @@ function getDataAndDrawGraphs(appName, rowNum) {
 	);
 };
 
-function updateGraphs(data) {
+function updateGraphs(data, text, xhqr) {
+	console.log("update graphs: " + data);
 	var table = document.getElementById("mTable");
 	
 	$.each(data.names, 
