@@ -32,8 +32,7 @@ function getDataAndDrawGraphs(appName, rowNum) {
 	);
 };
 
-function updateGraphs(data, text, xhqr) {
-	console.log("update graphs: " + data);
+function updateGraphs(data) {
 	var table = document.getElementById("mTable");
 	
 	$.each(data.names, 
