@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Playing Around With HTML5's Canvas Element</title>
+<link type="text/css" href="css/canvas.css" rel="stylesheet" />
+<link type="text/css" href="http://jqueryui.com/themes/base/jquery.ui.all.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/canvas.min.js"></script>
+<script type="text/javascript" src="js/analytics.js"></script>
+</head>
+<body class="center">
+
+	<h3>Click to draw in the canvas!</h3>
+	<canvas id="graph" width="700" height="500"
+		style="border: 2px solid black; background-color: white"></canvas>
+	<br />
+	<table class="center">
+		<tr>
+			<td>
+				<div id='red'></div></td>
+			<td>Current Color:
+				<div id="swatch"
+					style="display: inline-block; width: 1em; height: 1em;"></div></td>
+		</tr>
+		<tr>
+			<td>
+				<div id='green'></div></td>
+			<td>Size
+				<div id='size'></div></td>
+		</tr>
+		<tr>
+			<td>
+				<div id='blue'></div></td>
+		</tr>
+	</table>
+</body>
+</html>

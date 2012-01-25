@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Vehicle Log</title>
+<link rel="stylesheet" href="../css/handheld.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.min.css" />
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.mobile.min.js"></script>
+</head>
+<body>
+	<div data-role="page" data-theme="a" id="jqm-home">
+		<div data-role="header" class="ui-bar-a ui-header" role="banner">
+			<a href="#"
+				onclick="$.mobile.changePage('mobile.html', { transition:'slide', reverse: true });"
+				class="ui-btn-left ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-down-a ui-btn-up-a"
+				data-icon="arrow-l" data-theme="a"> <span
+				class="ui-btn-inner ui-btn-corner-all"> <span
+					class="ui-btn-text">Back</span> <span
+					class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
+			</span>
+			</a>
+			<h1 class="ui-title" tabindex="0" role="heading">Vehicle Log for
+				Android</h1>
+		</div>
+		<div data-role="content" data-theme="a">
+			<p>To provide an easy way for people to track the
+				maintenance/fuel-ups of their vehicles.</p>
+
+			<p>There is always the option to just keep a vehicle log in the
+				glove compartment of the vehicle, but the problem with this is that
+				there is no way to see this unless you are in your vehicle. In
+				addition, you have to perform calculations if you want to see
+				average MPG, or cost per week or per month.</p>
+
+			<p>When I decided to start working on this project, I wanted to
+				come up with a solution that would allow people to easily add
+				records to their database from their Android phone, and then view
+				that data on the web as well. My other goal was to have it
+				automatically calculate important information including average MPG,
+				total cost of the vehicle (money spent after the purchase of the
+				vehicle), cost per week, cost per month and cost per year.</p>
+
+			<p>
+				Feel free to try it out at <a href="http://cars.brianreber.com">http://cars.brianreber.com</a>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

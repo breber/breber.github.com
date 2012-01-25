@@ -1,0 +1,21 @@
+<html>
+<head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/analytics.js"></script>
+<script type="text/javascript" src="js/admobdataviz.js"></script>
+<script type="text/javascript">
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(theCallback);
+ 
+ 	function theCallback() {
+ 		$.get("/getadmob", updateGraphs);
+ 	};
+</script>
+<script type="text/javascript" src="js/analytics.js"></script>
+<title>AdMob Stats</title>
+</head>
+<body>
+	<table id="mTable"></table>
+</body>
+</html>

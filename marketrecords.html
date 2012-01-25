@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Android Market Developer Records Form</title>
+<link type="text/css" href="css/website.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/analytics.js"></script>
+<script type="text/javascript">
+	google.load("webfont", "1.0.22");
+	
+	google.setOnLoadCallback(function() {
+	    WebFont.load({
+	      google: {
+	        families: [ 'Ubuntu' ]
+	      }});
+	  });
+</script>
+</head>
+<body>
+<div class="center outer ubuntu">
+<h1>Android Market Logging!</h1>
+
+<form action="/recordcount" method="post">
+<h2>Download Counts</h2>
+<table class="center">
+	<tr>
+		<td><b><font face="Arial" size="2">App Name</font></b></td>
+		<td><font face="Arial"> <input name="appName"
+			id="appName" size="45" > </font></td>
+	</tr>
+	<tr>
+		<td><b><font face="Arial" size="2">Total Downloads:</font></b></td>
+		<td><font face="Arial"> <input name="totalDownloads"
+			id="totalDownloads" size="45" > </font></td>
+	</tr>
+	<tr>
+		<td><b><font face="Arial" size="2">Active Downloads:</font></b></td>
+		<td><font face="Arial"> <input name="activeDownloads" id="activeDownloads"
+			size="45" > </font></td>
+	</tr>
+</table>
+<input type="submit" value="Submit">
+</form>
+
+<hr>
+
+<form action="/recordrating" method="post">
+<h2>Ratings</h2>
+<table class="center">
+	<tr>
+		<td><b><font face="Arial" size="2">App Name</font></b></td>
+		<td><font face="Arial"> <input name="appName"
+			id="appNameRating" size="45" > </font></td>
+	</tr>
+	<tr>
+		<td><b><font face="Arial" size="2">Five Star Ratings:</font></b></td>
+		<td><font face="Arial"> <input name="fiveStar" id="fiveStar"
+			size="45" > </font></td>
+	</tr>
+	<tr>
+		<td><b><font face="Arial" size="2">Four Star Ratings:</font></b></td>
+		<td><font face="Arial"> <input name="fourStar" id="fourStar"
+			size="45" > </font></td>
+	</tr>
+		<tr>
+		<td><b><font face="Arial" size="2">Three Star Ratings:</font></b></td>
+		<td><font face="Arial"> <input name="threeStar" id="threeStar"
+			size="45" > </font></td>
+	</tr>
+		<tr>
+		<td><b><font face="Arial" size="2">Two Star Ratings:</font></b></td>
+		<td><font face="Arial"> <input name="twoStar" id="twoStar"
+			size="45" > </font></td>
+	</tr>
+	<tr>
+		<td><b><font face="Arial" size="2">One Star Ratings:</font></b></td>
+		<td><font face="Arial"> <input name="oneStar" id="oneStar"
+			size="45" > </font></td>
+	</tr>
+</table>
+<input type="submit" value="Submit">
+</form>
+<br />
+</div>
+</body>
+</html>

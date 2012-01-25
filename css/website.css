@@ -1,81 +1,83 @@
-body {
+#wrapper {
 	height: 100%;
 	display:table;
 	margin: 8px;
-    font-family: "Helvetica", Veranda, Sans-Serif;
-    font-size: small;
-	margin: 0px;
 }
 
-.right {
-	min-width: 350px;
+#right {
+	width: 250px;
 	display: table-cell;
 	height: 100%;
+	float: left;
 }
 
-.left {
+#left {
 	display: table-cell;
 	vertical-align: top;
 	height: 100%;
-    width: 100%;
+	width: 100%;
 	padding: 0 15px 15px 15px;
+	border: 2px solid #4479D4;
+	background: #6A92D4;
 }
 
-.wrapper {
-    display: table;
-    width: 100%;
-    height: 100%;
+a:link, a:visited, a:active {
+	text-decoration: none;
+	color: #052C6E;
 }
 
-.toolbar {
-    display: table-row;
-    padding-bottom: 5px;
+a:hover {
+	text-decoration: underline;
 }
 
-.editor {
-    display: table-row;
-    height: 100%;
-    overflow-y: scroll;
-    font-size: medium;
+body {
+	font-family: "Helvetica", Veranda, Sans-Serif;
+	background: #1049A9;
+	margin: 0px;
 }
 
-#editor {
-    position: absolute;
-    width: 500px;
-    height: 400px;
+.head {
+	width: 250px;
+	display: inline-block;
+	background: #6A92D4;
+	-moz-border-radius: 10px 0 0 0;
+	border-radius: 0 0 10px 0;
+	margin-bottom: 5px;
+	border-right: 2px solid #4479D4;
+	border-bottom: 2px solid #4479D4;
+	text-align: center;
 }
 
-.messages {
-    height: 50px;
-    display: table-row;
+#social {
+	display: inline-block;
+	margin-bottom: 5px;
+	text-align: center;
+	vertical-align: middle;
+	padding-left: 25px;
 }
 
-#messages {
-    width: 100%;
-    height: 100%;
+#social a {
+	margin-right: 25px;
 }
 
-.registerTable {
-    width: 100%;
-    text-align: center;
+.imagecenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: none;
 }
 
-.registerTable td {
-    font-family: "Courier";
-    font-size: small;
+img:hover {
+	-moz-box-shadow: 0 0 20px gray;
+	-webkit-box-shadow: 0 0 20px gray;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
-.registerTable td:last-child {
-    text-align: right;
-}
-
-.registerTable .footer {
-    font-family: "Helvetica", Veranda, Sans-Serif;
-    text-align: center !important; 
-}
-
-.registerTable tr:nth-child(even) {
-    background: #CCC;
+div {
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-bottom: 0;
 }
 
 .center {
@@ -83,4 +85,44 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	border: none;
+}
+
+nav a:link, nav a:visited, #cpyrght {
+	display: block;
+	font-size: 90%;
+	padding: 5px;
+	color: #6A92D4;
+	text-decoration: none;
+}
+nav a:hover {
+	-moz-box-shadow: 0 0 20px gray;
+	-webkit-box-shadow: 0 0 20px gray;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+nav {
+	margin: 0;
+}
+
+.navbar * {
+	margin: 0;
+}
+
+.navbar ul {
+	list-style-type: none;
+	padding: 5px;
+}
+
+.ubuntu {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.barrelRoll {
+	-webkit-transition:all 2s ease-in-out;
+	-webkit-transform:rotate(360deg);
+	transition:all 2s ease-in-out;
+	transform:rotate(360deg);
+	-moz-transition:all 2s ease-in-out;
+	-moz-transform:rotate(360deg);
 }
