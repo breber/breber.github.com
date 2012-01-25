@@ -1,3 +1,16 @@
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(theCallback);
+
+function theCallback() {
+	$.getJSON("http://apps.brianreber.com/getapps?callback=?", updateGraphs);
+	$.ajax("http://apps.brianreber.com/getapps", {
+			crossDomain:true, 
+			dataType: "jsonp", 
+			success: updateGraphs
+		}
+	});
+};
+
 function getDataAndDrawGraphs(appName, rowNum) {
 	$.getJSON("http://apps.brianreber.com/getcounts?appName=" + appName + "&callback=?",
 		function (data) {
