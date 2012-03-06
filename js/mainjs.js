@@ -53,7 +53,7 @@ $().ready(function(){
     var socialText = [];
     socialText.push("<a href='http://github.com/breber'><img src='images/github.png' height='46px'/></a>");
     socialText.push("<a href='http://www.linkedin.com/in/breber'><img src='images/linkedin.png' height='46px'/></a>");
-    socialText.push("<a href='https://market.android.com/developer?pub=Brian+Reber'><img src='images/60_avail_market_logo1.png' height='46px'/></a>");
+    socialText.push("<a href='https://market.android.com/developer?pub=Brian+Reber'><img src='images/googleplay.png' height='46px'/></a>");
     socialText.push("<a href='https://chrome.google.com/webstore/search/Brian%20Reber'><img src='images/ChromeWebStore.png' height='46px'/></a>");
     socialText.push("<a href='http://appworld.blackberry.com/webstore/vendor/23571/'><img src='images/blackberry.png' height='46px'/></a>");
     
