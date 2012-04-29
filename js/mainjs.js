@@ -20,7 +20,7 @@ $().ready(function(){
     rightText.push("<a href='index.html'>About</a>");
     rightText.push("<a href='languages.html'>Languages</a>");
     rightText.push("<a href='platforms.html'>Platforms</a>");
-    rightText.push("<a href='androidmarket.html'>Android Market</a>");
+    rightText.push("<a href='androidmarket.html'>Google Play Store</a>");
     rightText.push("<ul id='navbarlist'>");
     rightText.push("<li class='nav' id='2012'><b>2012</b>");
     rightText.push("<ul>");
