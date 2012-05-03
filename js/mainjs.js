@@ -39,7 +39,7 @@ $().ready(function(){
     rightText.push("<li><a href='https://github.com/breber/CyRide'>CyRide for Android</a></li>");
     rightText.push("<li><a href='https://github.com/breber/Number-Guess'>Android Number Guess</a></li>");
     rightText.push("<li><a href='http://home.engineering.iastate.edu/~breber/Minesweeper/minesweeper.html'>Minesweeper</a></li>");
-    rightText.push("<li><a href='http://code.google.com/p/iphone-motion-unlock'>iPhone Motion Unlock</a></li>");
+    rightText.push("<li><a href='https://github.com/breber/motion-unlock'>iPhone Motion Unlock</a></li>");
     rightText.push("<li><a href='canvastest.html'>HTML5 Canvas Drawing</a></li>");
     rightText.push("<li><a href='mines.html'>HTML5 &amp; jQuery Minesweeper</a></li>");
     rightText.push("</ul></li>");
