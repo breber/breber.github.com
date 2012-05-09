@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head><title>Google Analytics -- Coke Rewards</title></head>
-<body>
+<body onload="renderGraph()">
 	<h1>Coke Rewards Event Tracking</h1>
 	<hr>
 	<!-- Add Google Analytics authorization button -->
@@ -25,7 +25,7 @@
   
 	var currentDate = new Date();
 	var dateString = sprintf("%4d-%02d-%02d", currentDate.getFullYear(), 
-						currentDate.getMonth(), currentDate.getDate());
+						currentDate.getMonth() + 1, currentDate.getDate());
 	gadash.configKeys({
 		'apiKey': API_KEY,
 		'clientId': CLIENT_ID
@@ -43,9 +43,7 @@
 			'ids': TABLE_ID,
 			'metrics': 'ga:totalEvents',
 			'start-date':'2012-01-16',
-			'end-date': dateString,
-			'dimensions': 'ga:eventCategory',
-			'sort': '-ga:totalEvents'
+			'end-date': dateString
 		},
 		'chartOptions': {
 			width: 700,
