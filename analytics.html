@@ -14,6 +14,7 @@
 	</div>
 
 	<!-- Load all libraries and run some JS code -->
+	<script src="js/sprintf.js"></script>
 	<script src="https://www.google.com/jsapi"></script>
 	<script src="js/gadash-1.0.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=gadashInit"></script>
@@ -23,8 +24,8 @@
 	var TABLE_ID = 'ga:55070743';
   
 	var currentDate = new Date();
-	var dateString = currentDate.getFullYear() + "-" + 
-						currentDate.getMonth() + "-" + currentDate.getDate();
+	var dateString = sprintf("%4d-%02d-%02d", currentDate.getFullYear(), 
+						currentDate.getMonth(), currentDate.getDate());
 	gadash.configKeys({
 		'apiKey': API_KEY,
 		'clientId': CLIENT_ID
@@ -56,7 +57,7 @@
 	};
 	
 	var eventsTableConfig = {
-		'divContainer': 'eventsOverTimeConfig',
+		'divContainer': 'eventsTableConfig',
 		'type': 'Table',
 		'query': {
 			'ids': TABLE_ID,
