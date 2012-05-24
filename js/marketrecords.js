@@ -6,14 +6,11 @@ $(function() {
 		modal: true,
 		buttons: {
 			"Submit": function() {
-				// TODO: submit form
+				$("#submitRatings").click();
 			},
 			Cancel: function() {
 				$(this).dialog("close");
 			}
-		},
-		close: function() {
-			allFields.val("").removeClass("ui-state-error");
 		}
 	});
 	
@@ -24,14 +21,11 @@ $(function() {
 		modal: true,
 		buttons: {
 			"Submit": function() {
-				// TODO: submit form
+				$("#submitDownloads").click();
 			},
 			Cancel: function() {
 				$(this).dialog("close");
 			}
-		},
-		close: function() {
-			allFields.val("").removeClass("ui-state-error");
 		}
 	});
 });

@@ -47,7 +47,7 @@ function updateGraphs(data) {
 			var div2 = document.createElement("div");
 			var button1 = document.createElement("button");
 			button1.id = 'addDownload' + index;
-			button1.value = 'Add Download';
+			button1.innerText = 'Add Download';
 			div2.appendChild(button1);
 			
 			col1.appendChild(div1);
@@ -62,7 +62,7 @@ function updateGraphs(data) {
 			var div5 = document.createElement("div");
 			var button2 = document.createElement("button");
 			button2.id = 'addRating' + index;
-			button2.value = 'Add Rating';
+			button2.innerText = 'Add Rating';
 			div5.appendChild(button2);
 			
 			col2.appendChild(div3);

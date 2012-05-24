@@ -20,8 +20,7 @@
 <title>Android App Stats</title>
 </head>
 <body>
-	<div id="ratingForm" title="Add new rating">
-		<p class="validateTips">All form fields are required.</p>
+	<div id="ratingForm" title="Update Ratings">
 		<form action="http://apps.brianreber.com/recordrating" method="post">
 			<fieldset>
 				<label for="appNameRating">App Name</label>
@@ -36,12 +35,12 @@
 				<input type="text" name="twoStar" id="twoStar" value="" class="text ui-widget-content ui-corner-all" />
 				<label for="oneStar">One Star Ratings</label>
 				<input type="text" name="oneStar" id="oneStar" value="" class="text ui-widget-content ui-corner-all" />
+				<input type="submit" id="submitRatings" style="display: none" />
 			</fieldset>
 		</form>
 	</div>
 	
-	<div id="countForm" title="Add new count">
-		<p class="validateTips">All form fields are required.</p>
+	<div id="countForm" title="Update Download Counts">
 		<form action="http://apps.brianreber.com/recordcount" method="post">
 			<fieldset>
 				<label for="appNameCount">App Name</label>
@@ -50,6 +49,7 @@
 				<input type="text" name="totalDownloads" id="totalDownloads" value="" class="text ui-widget-content ui-corner-all" />
 				<label for="activeDownloads">Active Downloads</label>
 				<input type="text" name="activeDownloads" id="activeDownloads" value="" class="text ui-widget-content ui-corner-all" />
+				<input type="submit" id="submitDownloads" style="display: none" />
 			</fieldset>
 		</form>
 	</div>
