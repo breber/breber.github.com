@@ -44,21 +44,43 @@ function updateGraphs(data) {
 			var div1 = document.createElement("div");
 			div1.id = 'areaChart' + index;
 			
-			col1.appendChild(div1);
-			
 			var div2 = document.createElement("div");
-			div2.id = 'pieChart' + index;
+			var button1 = document.createElement("button");
+			button1.id = 'addDownload' + index;
+			div2.appendChild(button1);
+			
+			col1.appendChild(div1);
+			col1.appendChild(div2);
 			
 			var div3 = document.createElement("div");
-			div3.id = 'count' + index;
+			div3.id = 'pieChart' + index;
 			
-			col2.appendChild(div2);
+			var div4 = document.createElement("div");
+			div4.id = 'count' + index;
+			
+			var div5 = document.createElement("div");
+			var button2 = document.createElement("button");
+			button2.id = 'addRating' + index;
+			div5.appendChild(button1);
+			
 			col2.appendChild(div3);
+			col2.appendChild(div4);
+			col2.appendChild(div5);
 			
 			row.appendChild(col1);
 			row.appendChild(col2);
 			
 			table.appendChild(row);
+			
+			$("#addDownload" + index).button().click(function() {
+				$("#appNameCount").value(value);
+				$("#countForm").dialog("open");
+			});
+			
+			$("#addRating" + index).button().click(function() {
+				$("#appNameRating").value(value);
+				$("#ratingForm").dialog("open");
+			});
 			
 			getDataAndDrawGraphs(value, index);
 		}

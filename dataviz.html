@@ -1,12 +1,59 @@
 <html>
 <head>
+<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/analytics.js"></script>
+<script type="text/javascript" src="js/marketrecords.js"></script>
 <script type="text/javascript" src="js/dataviz.js"></script>
+
+<style>
+	body { font-size: 62.5%; }
+	label, input { display:block; }
+	input.text { margin-bottom:12px; width:95%; padding: .4em; }
+	fieldset { padding:0; border:0; margin-top:25px; }
+	.ui-dialog .ui-state-error { padding: .3em; }
+	.validateTips { border: 1px solid transparent; padding: 0.3em; }
+</style>
+
 <title>Android App Stats</title>
 </head>
 <body>
+	<div id="ratingForm" title="Add new rating">
+		<p class="validateTips">All form fields are required.</p>
+		<form action="http://apps.brianreber.com/recordrating" method="post">
+			<fieldset>
+				<label for="appNameRating">App Name</label>
+				<input type="text" name="appNameRating" id="appNameRating" class="text ui-widget-content ui-corner-all" />
+				<label for="fiveStar">Five Star Ratings</label>
+				<input type="text" name="fiveStar" id="fiveStar" value="" class="text ui-widget-content ui-corner-all" />
+				<label for="fourStar">Four Star Ratings</label>
+				<input type="text" name="fourStar" id="fourStar" value="" class="text ui-widget-content ui-corner-all" />
+				<label for="threeStar">Three Star Ratings</label>
+				<input type="text" name="threeStar" id="threeStar" value="" class="text ui-widget-content ui-corner-all" />
+				<label for="twoStar">Two Star Ratings</label>
+				<input type="text" name="twoStar" id="twoStar" value="" class="text ui-widget-content ui-corner-all" />
+				<label for="oneStar">One Star Ratings</label>
+				<input type="text" name="oneStar" id="oneStar" value="" class="text ui-widget-content ui-corner-all" />
+			</fieldset>
+		</form>
+	</div>
+	
+	<div id="countForm" title="Add new count">
+		<p class="validateTips">All form fields are required.</p>
+		<form action="http://apps.brianreber.com/recordcount" method="post">
+			<fieldset>
+				<label for="appNameCount">App Name</label>
+				<input type="text" name="appNameCount" id="appNameCount" class="text ui-widget-content ui-corner-all" />
+				<label for="totalDownloads">Total Downloads</label>
+				<input type="text" name="totalDownloads" id="totalDownloads" value="" class="text ui-widget-content ui-corner-all" />
+				<label for="activeDownloads">Active Downloads</label>
+				<input type="text" name="activeDownloads" id="activeDownloads" value="" class="text ui-widget-content ui-corner-all" />
+			</fieldset>
+		</form>
+	</div>
+
 	<table id="mTable"></table>
 </body>
 </html>
