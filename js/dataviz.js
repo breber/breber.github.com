@@ -33,12 +33,12 @@ function getDataAndDrawGraphs(appName, rowNum) {
 };
 
 function updateGraphs(data, status, xhr) {
-	console.log("updateGraphs: ");
-	console.log(data);
-	console.log(status);
-	console.log(xhr);
-
 	var table = document.getElementById("mTable");
+
+	if (xhr.status != 200) {
+		table.innerText = "Unable to load graph: Error " + xhr.status;
+		return;
+	}
 	
 	$.each(data.names, 
 		function (index, value) {
