@@ -47,6 +47,7 @@ function updateGraphs(data) {
 			var div2 = document.createElement("div");
 			var button1 = document.createElement("button");
 			button1.id = 'addDownload' + index;
+			button1.value = 'Add Download';
 			div2.appendChild(button1);
 			
 			col1.appendChild(div1);
@@ -61,7 +62,8 @@ function updateGraphs(data) {
 			var div5 = document.createElement("div");
 			var button2 = document.createElement("button");
 			button2.id = 'addRating' + index;
-			div5.appendChild(button1);
+			button2.value = 'Add Rating';
+			div5.appendChild(button2);
 			
 			col2.appendChild(div3);
 			col2.appendChild(div4);
@@ -73,12 +75,12 @@ function updateGraphs(data) {
 			table.appendChild(row);
 			
 			$("#addDownload" + index).button().click(function() {
-				$("#appNameCount").value(value);
+				$("#appNameCount").val(value);
 				$("#countForm").dialog("open");
 			});
 			
 			$("#addRating" + index).button().click(function() {
-				$("#appNameRating").value(value);
+				$("#appNameRating").val(value);
 				$("#ratingForm").dialog("open");
 			});
 			
