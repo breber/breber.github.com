@@ -1,7 +1,7 @@
 $(function() {
 	$("#ratingForm").dialog({
 		autoOpen: false,
-		height: 300,
+		height: 400,
 		width: 350,
 		modal: true,
 		buttons: {
