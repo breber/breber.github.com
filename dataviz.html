@@ -1,55 +1,68 @@
 <html>
 <head>
-<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="http://cdn.brianreber.com/css/bootstrap.min.css" rel="stylesheet" />
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://cdn.brianreber.com/js/jquery.min.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://cdn.brianreber.com/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://cdn.brianreber.com/js/analytics.js"></script>
 <script type="text/javascript" src="js/marketrecords.js"></script>
 <script type="text/javascript" src="js/dataviz.js"></script>
 
-<style>
-	body { font-size: 62.5%; }
-	label, input { display:block; }
-	input.text { margin-bottom:12px; width:95%; padding: .4em; }
-	fieldset { padding:0; border:0; margin-top:25px; }
-</style>
-
 <title>Android App Stats</title>
 </head>
 <body>
-	<div id="ratingForm" title="Update Ratings">
-		<form action="http://apps.brianreber.com/recordrating" method="post">
-			<fieldset>
-				<label for="appNameRating">App Name</label>
-				<input type="text" name="appNameRating" id="appNameRating" class="text ui-widget-content ui-corner-all" />
-				<label for="fiveStar">Five Star Ratings</label>
-				<input type="text" name="fiveStar" id="fiveStar" value="" class="text ui-widget-content ui-corner-all" />
-				<label for="fourStar">Four Star Ratings</label>
-				<input type="text" name="fourStar" id="fourStar" value="" class="text ui-widget-content ui-corner-all" />
-				<label for="threeStar">Three Star Ratings</label>
-				<input type="text" name="threeStar" id="threeStar" value="" class="text ui-widget-content ui-corner-all" />
-				<label for="twoStar">Two Star Ratings</label>
-				<input type="text" name="twoStar" id="twoStar" value="" class="text ui-widget-content ui-corner-all" />
-				<label for="oneStar">One Star Ratings</label>
-				<input type="text" name="oneStar" id="oneStar" value="" class="text ui-widget-content ui-corner-all" />
-				<input type="submit" id="submitRatings" style="display: none" />
-			</fieldset>
-		</form>
+	<div id="ratingForm" class="modal hide">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>Update Ratings</h3>
+		</div>
+		<div class="modal-body">
+			<form action="http://apps.brianreber.com/recordrating" method="post">
+				<fieldset>
+					<label for="appNameRating">App Name</label>
+					<input type="text" name="appNameRating" id="appNameRating" class="text ui-widget-content ui-corner-all" />
+					<label for="fiveStar">Five Star Ratings</label>
+					<input type="text" name="fiveStar" id="fiveStar" value="" class="text ui-widget-content ui-corner-all" />
+					<label for="fourStar">Four Star Ratings</label>
+					<input type="text" name="fourStar" id="fourStar" value="" class="text ui-widget-content ui-corner-all" />
+					<label for="threeStar">Three Star Ratings</label>
+					<input type="text" name="threeStar" id="threeStar" value="" class="text ui-widget-content ui-corner-all" />
+					<label for="twoStar">Two Star Ratings</label>
+					<input type="text" name="twoStar" id="twoStar" value="" class="text ui-widget-content ui-corner-all" />
+					<label for="oneStar">One Star Ratings</label>
+					<input type="text" name="oneStar" id="oneStar" value="" class="text ui-widget-content ui-corner-all" />
+					<input type="submit" id="submitRatings" style="display: none" />
+				</fieldset>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+			<a href="#" class="btn btn-primary">Save changes</a>
+		</div>
 	</div>
 	
-	<div id="countForm" title="Update Download Counts">
-		<form action="http://apps.brianreber.com/recordcount" method="post">
-			<fieldset>
-				<label for="appNameCount">App Name</label>
-				<input type="text" name="appNameCount" id="appNameCount" class="text ui-widget-content ui-corner-all" />
-				<label for="totalDownloads">Total Downloads</label>
-				<input type="text" name="totalDownloads" id="totalDownloads" value="" class="text ui-widget-content ui-corner-all" />
-				<label for="activeDownloads">Active Downloads</label>
-				<input type="text" name="activeDownloads" id="activeDownloads" value="" class="text ui-widget-content ui-corner-all" />
-				<input type="submit" id="submitDownloads" style="display: none" />
-			</fieldset>
-		</form>
+	<div id="countForm" class="modal hide">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>Update Download Counts</h3>
+		</div>
+		<div class="modal-body">
+			<form action="http://apps.brianreber.com/recordcount" method="post">
+				<fieldset>
+					<label for="appNameCount">App Name</label>
+					<input type="text" name="appNameCount" id="appNameCount" class="text ui-widget-content ui-corner-all" />
+					<label for="totalDownloads">Total Downloads</label>
+					<input type="text" name="totalDownloads" id="totalDownloads" value="" class="text ui-widget-content ui-corner-all" />
+					<label for="activeDownloads">Active Downloads</label>
+					<input type="text" name="activeDownloads" id="activeDownloads" value="" class="text ui-widget-content ui-corner-all" />
+					<input type="submit" id="submitDownloads" style="display: none" />
+				</fieldset>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+			<a href="#" class="btn btn-primary">Save changes</a>
+		</div>
 	</div>
 
 	<table id="mTable"></table>

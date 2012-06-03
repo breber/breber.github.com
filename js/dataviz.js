@@ -81,13 +81,13 @@ function updateGraphs(data, status, xhr) {
 			
 			$("#addDownload" + index).button().click(function() {
 				$("#appNameCount").val(value);
-				$("#countForm").dialog("open");
+				$("#countForm").modal();
 				$("#totalDownloads").focus();
 			});
 			
 			$("#addRating" + index).button().click(function() {
 				$("#appNameRating").val(value);
-				$("#ratingForm").dialog("open");
+				$("#ratingForm").modal();
 				$("#fiveStar").focus();
 			});
 			
