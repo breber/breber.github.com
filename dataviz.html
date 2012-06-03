@@ -4,6 +4,7 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://cdn.brianreber.com/js/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.brianreber.com/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://cdn.brianreber.com/js/bootstrap-modal.js"></script>
 <script type="text/javascript" src="http://cdn.brianreber.com/js/analytics.js"></script>
 <script type="text/javascript" src="js/marketrecords.js"></script>
 <script type="text/javascript" src="js/dataviz.js"></script>
@@ -12,12 +13,12 @@
 </head>
 <body>
 	<div id="ratingForm" class="modal hide">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">×</button>
-			<h3>Update Ratings</h3>
-		</div>
-		<div class="modal-body">
-			<form action="http://apps.brianreber.com/recordrating" method="post">
+		<form action="http://apps.brianreber.com/recordrating" method="post">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Update Ratings</h3>
+			</div>
+			<div class="modal-body">
 				<fieldset>
 					<label for="appNameRating">App Name</label>
 					<input type="text" name="appNameRating" id="appNameRating" class="text ui-widget-content ui-corner-all" />
@@ -31,14 +32,13 @@
 					<input type="text" name="twoStar" id="twoStar" value="" class="text ui-widget-content ui-corner-all" />
 					<label for="oneStar">One Star Ratings</label>
 					<input type="text" name="oneStar" id="oneStar" value="" class="text ui-widget-content ui-corner-all" />
-					<input type="submit" id="submitRatings" style="display: none" />
 				</fieldset>
-			</form>
-		</div>
-		<div class="modal-footer">
-			<a href="#" class="btn" data-dismiss="modal">Close</a>
-			<a href="#" class="btn btn-primary">Save changes</a>
-		</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<input type="submit" class="btn btn-primary" id="submitRatings" />
+			</div>
+		</form>
 	</div>
 	
 	<div id="countForm" class="modal hide">
