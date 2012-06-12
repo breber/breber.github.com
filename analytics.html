@@ -1,12 +1,26 @@
 <!DOCTYPE>
 <html>
-<head><title>Google Analytics -- Coke Rewards</title></head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" rel="stylesheet" href="http://cdn.brianreber.com/css/bootstrap.min.css">
+<script type="text/javascript" src="http://cdn.brianreber.com/js/bootstrap.min.js"></script>
+
+<title>Google Analytics -- Coke Rewards</title>
+</head>
 <body onload="renderGraph()">
-	<h1>Coke Rewards Event Tracking</h1>
-	<hr>
-	<!-- Add Google Analytics authorization button -->
-	<button id="authorize-button" style="visibility: hidden">Authorize Analytics</button>
-	
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="/">Google Analytics</a>
+			<div class="btn-group pull-right">
+				<a class="btn dropdown-toggle" id="authorize-button" style="visibility: hidden" href="#">
+					Authorize Analytics
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
 	<div id="ui" style="display:none">
 		<h3>Events Over Time</h3>
 		<div id='eventsOverTimeConfig' style="display:none"></div>
@@ -73,5 +87,6 @@
 		document.getElementById('ui').style.display = 'block';
 	};
 	</script>
+</div>
 </body>
 </html>
