@@ -46,7 +46,7 @@
   
 	var currentDate = new Date();
 	var dateString = sprintf("%4d-%02d-%02d", currentDate.getFullYear(), 
-						currentDate.getMonth() + 1, currentDate.getDate());
+				currentDate.getMonth() + 1, currentDate.getDate());
 	gadash.configKeys({
 		'apiKey': API_KEY,
 		'clientId': CLIENT_ID
@@ -87,7 +87,6 @@
 	};
 	
 	function renderGraph() {
-		//eventsOverTime.set(eventsOverTimeConfig).render();
 		eventsTable.set(eventsTableConfig).render();
 
 		// Display UI.
