@@ -51,7 +51,7 @@ function updateGraphs(data, status, xhr) {
 			
 			var div2 = document.createElement("div");
 			var button1 = document.createElement("button");
-			button1.className = 'btn btn-primary';
+			button1.className = 'btn btn-primary center';
 			button1.id = 'addDownload' + index;
 			button1.innerText = 'Add Download';
 			div2.appendChild(button1);
@@ -67,7 +67,7 @@ function updateGraphs(data, status, xhr) {
 			
 			var div5 = document.createElement("div");
 			var button2 = document.createElement("button");
-			button2.className = 'btn btn-primary';
+			button2.className = 'btn btn-primary center';
 			button2.id = 'addRating' + index;
 			button2.innerText = 'Add Rating';
 			div5.appendChild(button2);
