@@ -136,7 +136,7 @@ function drawPieChart(theData, rowNum) {
 	chart.draw(data, {width: 450, height: 450, title: theTitle});
 	
 	var div = document.getElementById('count' + rowNum);
-	div.innerHTML = "Total Ratings: " + count + "<br />Average Rating: " + (total / count);
+	div.innerHTML = "Total Ratings: " + count + "<br />Average Rating: " + sprintf("%.4f", (total / count));
 };
 
 function convertStringToInt(str) {
