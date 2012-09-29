@@ -55,6 +55,7 @@ function updateGraphs(data, status, xhr) {
 			button1.className = 'btn btn-primary';
 			button1.id = 'addDownload' + index;
 			button1.innerText = 'Add Download';
+			button1.textContent = 'Add Download';
 			div2.appendChild(button1);
 			
 			col1.appendChild(div1);
@@ -72,6 +73,7 @@ function updateGraphs(data, status, xhr) {
 			button2.className = 'btn btn-primary';
 			button2.id = 'addRating' + index;
 			button2.innerText = 'Add Rating';
+			button2.textContent = 'Add Rating';
 			div5.appendChild(button2);
 			
 			col2.appendChild(div3);
