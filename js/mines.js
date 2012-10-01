@@ -90,6 +90,7 @@ function fillMines() {
 	var context = graph.getContext('2d');
 	var numCols = sessionStorage['numCols'];
 	var numRows = sessionStorage['numRows'];
+	var cellSize = 48;
 	for (var i = 0; i < numRows; i++) {
 		for (var j = 0; j < numCols; j++) {
 			if ('MINE' === getCellValue(i, j)) {
