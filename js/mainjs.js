@@ -14,54 +14,6 @@ $().ready(function switchMobile() {
 
 // Set up the navigation bar
 $().ready(function(){
-    var rightText = [];
-    rightText.push("<div class='navbar'>");
-    rightText.push("<nav>");
-    rightText.push("<a href='index.html'>About</a>");
-    rightText.push("<a href='languages.html'>Languages</a>");
-    rightText.push("<a href='platforms.html'>Platforms</a>");
-    rightText.push("<a href='googleplaystore.html'>Google Play Store</a>");
-    rightText.push("<ul id='navbarlist'>");
-    rightText.push("<li class='nav' id='2012'><b>2012</b>");
-    rightText.push("<ul>");
-    rightText.push("<li><a href='cokerewards.html'>Coke Rewards for Android</a></li>");
-    rightText.push("</ul></li>");
-    rightText.push("<li class='nav' id='2011'><b>2011</b>");
-    rightText.push("<ul>");
-    rightText.push("<li><a href='twitterpicviewer.html'>Twitter Picture Viewer</a></li>");
-    rightText.push("<li><a href='messagingprj.html'>Web-based SMS</a></li>");
-    rightText.push("<li><a href='vehiclerecords.html'>Vehicle Log</a></li>");
-    rightText.push("<li><a href='binary.html'>Binary Calculator</a></li>");
-    rightText.push("</ul></li>");
-    rightText.push("<li class='nav' id='2010'><b>2010</b>");
-    rightText.push("<ul>");
-    rightText.push("<li><a href='agendawidget.html'>Android Agenda Widget</a></li>");
-    rightText.push("<li><a href='https://github.com/breber/cyride'>CyRide for Android</a></li>");
-    rightText.push("<li><a href='https://github.com/breber/numberguess'>Android Number Guess</a></li>");
-    rightText.push("<li><a href='http://home.engineering.iastate.edu/~breber/Minesweeper/minesweeper.html'>Minesweeper</a></li>");
-    rightText.push("<li><a href='https://github.com/breber/motion-unlock'>iPhone Motion Unlock</a></li>");
-    rightText.push("<li><a href='canvastest.html'>HTML5 Canvas Drawing</a></li>");
-    rightText.push("<li><a href='mines.html'>HTML5 &amp; jQuery Minesweeper</a></li>");
-    rightText.push("</ul></li>");
-    rightText.push("</ul>");
-    rightText.push("</nav>");
-    rightText.push("</div>");
-    
-    $("div#right").html(rightText.join(""));
-    
-    
-    var socialText = [];
-    socialText.push("<a href='http://github.com/breber'><img src='images/github.png' height='46px'/></a>");
-    socialText.push("<a href='http://www.linkedin.com/in/breber'><img src='images/linkedin.png' height='46px'/></a>");
-    socialText.push("<a href='http://android.brianreber.com/'><img src='images/googleplay.png' height='46px'/></a>");
-    socialText.push("<a href='https://chrome.google.com/webstore/search/Brian%20Reber'><img src='images/ChromeWebStore.png' height='46px'/></a>");
-    socialText.push("<a href='http://appworld.blackberry.com/webstore/vendor/23571/'><img src='images/blackberry.png' height='46px'/></a>");
-    
-    $("div#social").html(socialText.join(""));
-    
-	
-    $("div#cpyrght").html("<div style='text-align: center'><p>Copyright &copy;<br /> Brian Reber, 2009 - " + new Date().getFullYear() + "</p></div>");
-    
     if ($.getUrlVar('barrelRoll') !== undefined) {
         document.body.className = 'barrelRoll';
     }
