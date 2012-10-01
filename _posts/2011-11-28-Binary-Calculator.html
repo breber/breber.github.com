@@ -1,0 +1,145 @@
+---
+layout: empty
+title: Binary Calculator
+summary: A binary calculator/converter
+---
+
+<div class="center outer">
+<h1>Binary Numbers</h1>
+
+<div class="center">
+	<h3>Operand 1</h3>
+</div>
+
+<table class="center">
+	<tr>
+		<td colspan="2"></td>
+		<td><b>Decimal:</b></td>
+		<td colspan="2"><input id="decimal" size="32" /></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan="6"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><b>Sign and Magnitude:</b></td>
+		<td colspan="2"><b>1's Complement:</b></td>
+		<td colspan="2"><b>2's Complement:</b></td>
+	</tr>
+	<tr>
+		<td><b>Binary:</b></td>
+		<td><input id="binarySM" size="64" /></td>
+		
+		<td><b>Binary:</b></td>
+		<td><input id="binary1C" size="64" /></td>
+		
+		<td><b>Binary:</b></td>
+		<td><input id="binary2C" size="64" /></td>
+	</tr>
+	<tr>
+		<td><b>Hex:</b></td>
+		<td><input id="hexSM" size="64" /></td>
+		
+		<td><b>Hex:</b></td>
+		<td><input id="hex1C" size="64" /></td>
+		
+		<td><b>Hex:</b></td>
+		<td><input id="hex2C" size="64" /></td>
+	</tr>
+</table>
+
+<br />
+<hr />
+
+<div class="center">
+	<h3>Operand 2</h3>
+</div>
+
+<table class="center">
+	<tr>
+		<td colspan="2"></td>
+		<td><b>Decimal:</b></td>
+		<td colspan="2"><input id="decimal2" size="32" /></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan="6"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><b>Sign and Magnitude:</b></td>
+		<td colspan="2"><b>1's Complement:</b></td>
+		<td colspan="2"><b>2's Complement:</b></td>
+	</tr>
+	<tr>
+		<td><b>Binary:</b></td>
+		<td><input id="binarySM2" size="64" /></td>
+		
+		<td><b>Binary:</b></td>
+		<td><input id="binary1C2" size="64" /></td>
+		
+		<td><b>Binary:</b></td>
+		<td><input id="binary2C2" size="64" /></td>
+	</tr>
+	<tr>
+		<td><b>Hex:</b></td>
+		<td><input id="hexSM2" size="64" /></td>
+		
+		<td><b>Hex:</b></td>
+		<td><input id="hex1C2" size="64" /></td>
+		
+		<td><b>Hex:</b></td>
+		<td><input id="hex2C2" size="64" /></td>
+	</tr>
+</table>
+
+<br />
+<hr />
+
+<div class="center">
+	<h3>Operations</h3>
+	<button id="performAdd">+</button>
+	<button id="performSub">-</button>
+	<button id="performMult">*</button>
+</div>
+
+<table class="center">
+	<tr>
+		<td colspan="2"></td>
+		<td><b>Decimal:</b></td>
+		<td colspan="2"><input id="decimalRslt" size="32" /></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan="6"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><b>Sign and Magnitude:</b></td>
+		<td colspan="2"><b>1's Complement:</b></td>
+		<td colspan="2"><b>2's Complement:</b></td>
+	</tr>
+	<tr>
+		<td><b>Binary:</b></td>
+		<td><input id="binarySMRslt" size="64" /></td>
+		
+		<td><b>Binary:</b></td>
+		<td><input id="binary1CRslt" size="64" /></td>
+		
+		<td><b>Binary:</b></td>
+		<td><input id="binary2CRslt" size="64" /></td>
+	</tr>
+	<tr>
+		<td><b>Hex:</b></td>
+		<td><input id="hexSMRslt" size="64" /></td>
+		
+		<td><b>Hex:</b></td>
+		<td><input id="hex1CRslt" size="64" /></td>
+		
+		<td><b>Hex:</b></td>
+		<td><input id="hex2CRslt" size="64" /></td>
+	</tr>
+</table>
+
+<br />
+</div>
+
+<script type="text/javascript" src="js/binary.js"></script>
