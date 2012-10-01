@@ -86,6 +86,7 @@ $().ready(function(){
 });
 
 function fillMines() {
+	var graph = document.getElementById('panel');
 	var context = graph.getContext('2d');
 	var numCols = sessionStorage['numCols'];
 	var numRows = sessionStorage['numRows'];
