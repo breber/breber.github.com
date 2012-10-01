@@ -32,8 +32,11 @@ a:hover {
 
 body {
 	font-family: "Helvetica", Veranda, Sans-Serif;
-	background: #1049A9;
 	margin: 0px;
+}
+
+.body {
+	background: #1049A9;
 }
 
 .head {
@@ -113,10 +116,6 @@ nav {
 .navbar ul {
 	list-style-type: none;
 	padding: 5px;
-}
-
-.ubuntu {
-	font-family: 'Ubuntu', sans-serif;
 }
 
 .barrelRoll {
