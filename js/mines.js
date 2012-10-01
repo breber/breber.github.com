@@ -30,7 +30,7 @@ $().ready(function(){
 	var panel = $('#panel');
 
 	var flagImage = new Image();
-	flagImage.src = "images/Flag.gif";
+	flagImage.src = "/images/Flag.gif";
 
 	$("#status").html('Waiting');
 
