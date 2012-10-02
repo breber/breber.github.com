@@ -4,7 +4,7 @@ title: Twitter Picture Viewer for Android
 summary: Information about my Twitter Picture Viewer for Android app
 ---
 
-## Coke Rewards for Android
+## Twitter Picture Viewer for Android
 
 ### Background
 
