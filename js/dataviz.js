@@ -2,11 +2,11 @@ google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(theCallback);
 
 function theCallback() {
-	$.getJSON("http://apps.brianreber.com/getapps?callback=?", updateGraphs);
+	$.getJSON("http://apps.brianreber.com/apps?callback=?", updateGraphs);
 };
 
 function getDataAndDrawGraphs(appName, rowNum) {
-	$.getJSON("http://apps.brianreber.com/getcounts?appName=" + appName + "&callback=?",
+	$.getJSON("http://apps.brianreber.com/counts?appName=" + appName + "&callback=?",
 		function (data) {
 			var temp = [];
 	
@@ -25,7 +25,7 @@ function getDataAndDrawGraphs(appName, rowNum) {
 		}
 	);
 
-	$.getJSON("http://apps.brianreber.com/getratings?appName=" + appName + "&callback=?", 
+	$.getJSON("http://apps.brianreber.com/ratings?appName=" + appName + "&callback=?", 
 		function (data) {
 			drawPieChart(data, rowNum);
 		}
@@ -40,7 +40,7 @@ function updateGraphs(data, status, xhr) {
 		return;
 	}
 	
-	$.each(data.names, 
+	$.each(data, 
 		function (index, value) {
 			var row = document.createElement("tr");
 			var col1 = document.createElement("td");
