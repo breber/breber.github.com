@@ -2,30 +2,30 @@ google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(theCallback);
 
 function theCallback() {
-	$.getJSON("http://apps.brianreber.com/apps?callback=?", updateGraphs);
+	$.getJSON("http://apps.brianreber.com/apps/list?callback=?", updateGraphs);
 };
 
 function getDataAndDrawGraphs(appName, rowNum) {
-	$.getJSON("http://apps.brianreber.com/counts?appName=" + appName + "&callback=?",
+	$.getJSON("http://apps.brianreber.com/apps/counts?appName=" + appName + "&callback=?",
 		function (data) {
 			var temp = [];
-	
-			$.each(data.data, 
+
+			$.each(data.data,
 				function (index, value) {
 					var obj = [];
 					obj.push(value.date);
 					obj.push(value.total);
-					obj.push(value.active);	
-		
+					obj.push(value.active);
+
 					temp.push(obj);
 				}
 			);
-	
+
 			drawLineChart(appName, temp, rowNum);
 		}
 	);
 
-	$.getJSON("http://apps.brianreber.com/ratings?appName=" + appName + "&callback=?", 
+	$.getJSON("http://apps.brianreber.com/apps/ratings?appName=" + appName + "&callback=?",
 		function (data) {
 			drawPieChart(data, rowNum);
 		}
@@ -39,16 +39,16 @@ function updateGraphs(data, status, xhr) {
 		table.innerText = "Unable to load graph: Error " + xhr.status;
 		return;
 	}
-	
-	$.each(data, 
+
+	$.each(data,
 		function (index, value) {
 			var row = document.createElement("tr");
 			var col1 = document.createElement("td");
 			var col2 = document.createElement("td");
-			
+
 			var div1 = document.createElement("div");
 			div1.id = 'areaChart' + index;
-			
+
 			var div2 = document.createElement("div");
 			div2.className = 'center';
 			var button1 = document.createElement("button");
@@ -57,16 +57,16 @@ function updateGraphs(data, status, xhr) {
 			button1.innerText = 'Add Download';
 			button1.textContent = 'Add Download';
 			div2.appendChild(button1);
-			
+
 			col1.appendChild(div1);
 			col1.appendChild(div2);
-			
+
 			var div3 = document.createElement("div");
 			div3.id = 'pieChart' + index;
-			
+
 			var div4 = document.createElement("div");
 			div4.id = 'count' + index;
-			
+
 			var div5 = document.createElement("div");
 			div5.className = 'center';
 			var button2 = document.createElement("button");
@@ -75,33 +75,33 @@ function updateGraphs(data, status, xhr) {
 			button2.innerText = 'Add Rating';
 			button2.textContent = 'Add Rating';
 			div5.appendChild(button2);
-			
+
 			col2.appendChild(div3);
 			col2.appendChild(div4);
 			col2.appendChild(div5);
-			
+
 			row.appendChild(col1);
 			row.appendChild(col2);
-			
+
 			table.appendChild(row);
-			
+
 			$("#addDownload" + index).button().click(function() {
 				$("#appNameCount").val(value);
 				$("#countForm").modal();
 				$("#totalDownloads").focus();
 			});
-			
+
 			$("#addRating" + index).button().click(function() {
 				$("#appNameRating").val(value);
 				$("#ratingForm").modal();
 				$("#fiveStar").focus();
 			});
-			
+
 			getDataAndDrawGraphs(value, index);
 		}
 	);
 };
- 	
+
 function drawLineChart(appName, theData, rowNum) {
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Date');
@@ -109,7 +109,7 @@ function drawLineChart(appName, theData, rowNum) {
 	data.addColumn('number', 'Active Installs');
 
 	data.addRows(theData);
-	
+
 	var chart = new google.visualization.AreaChart(document.getElementById('areaChart' + rowNum));
 	chart.draw(data, {width: 750, height: 500, title: appName + ' Downloads', hAxis: {title: 'Date', titleTextStyle: {color: '#FF0000'}}});
 };
@@ -121,9 +121,9 @@ function drawPieChart(theData, rowNum) {
 
 	var total = 0;
 	var count = 0;
-	
+
 	data.addRows(5);
-	$.each(theData.ratings, 
+	$.each(theData.ratings,
 		function (index, value) {
 			data.setValue(index, 0, value.rating);
 			data.setValue(index, 1, value.count);
@@ -131,12 +131,12 @@ function drawPieChart(theData, rowNum) {
 			total += (value.count * convertStringToInt(value.rating))
 		}
 	);
-	
+
 	var chart = new google.visualization.PieChart(document.getElementById('pieChart' + rowNum));
 	var theTitle = theData.appName + " Ratings as of " + theData.date;
 
 	chart.draw(data, {width: 450, height: 450, title: theTitle});
-	
+
 	var div = document.getElementById('count' + rowNum);
 	div.innerHTML = "Total Ratings: " + count + "<br />Average Rating: " + sprintf("%.4f", (total / count));
 };
