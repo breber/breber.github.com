@@ -40,6 +40,17 @@ html,body {
 	}
 }
 
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.center-block {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .barrelRoll {
 	-webkit-transition:all 2s ease-in-out;
 	-webkit-transform:rotate(360deg);
