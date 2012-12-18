@@ -2,42 +2,67 @@
 <html>
 <head>
 <title>{{ page.title }}</title>
+<link type="text/css" rel="stylesheet" href="http://cdn.brianreber.com/css/bootstrap.min.css">
 <link href="/css/website.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://cdn.brianreber.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.brianreber.com/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://cdn.brianreber.com/js/analytics.js"></script>
 </head>
 <body class="body">
-  <div class="head">
-    <h1>Brian Reber</h1>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Brian Reber</a>
+
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="http://github.com/breber">Github</a></li>
+          <li><a href="http://www.linkedin.com/in/breber">LinkedIn</a></li>
+          <li><a href="http://android.brianreber.com/">Google Play Store</a></li>
+          <li><a href="https://chrome.google.com/webstore/search-extensions/Brian%20Reber">Chrome Web Store</a></li>
+        </ul>
+      </div>
   </div>
-  <div id="social">
-    <a href="http://github.com/breber"><img src="/images/github.png" height="46px"></a>
-    <a href="http://www.linkedin.com/in/breber"><img src="/images/linkedin.png" height="46px"></a>
-    <a href="http://android.brianreber.com/"><img src="/images/googleplay.png" height="46px"></a>
-    <a href="https://chrome.google.com/webstore/search-extensions/Brian%20Reber"><img src="/images/ChromeWebStore.png" height="46px"></a>
-  </div>
-  <div id="wrapper">
-    <div id="right">
-      <div class="navbar">
-        <nav>
-          <a href="/">Home</a>
-          {% assign prevYear = 0 %}
-          {% for post in site.posts limit:10 %}
-          {% capture currYear %}{{ post.date | date: "%Y"}}{% endcapture %}
-          {% if currYear != prevYear and currYear != '2050' %}
-          <b>{{ currYear }}</b>
-          {% endif %}
-          <a href="{{ post.url }}">{{ post.title }}</a>
-          {% assign prevYear = currYear %}
-          {% endfor %}
-        </nav>
+</div>
+
+<div id="wrap">
+  <div class="container-fluid center-block top-margin">
+    <div id="content">
+      <div class="container-fluid center-block">
+        <div class="row-fluid">
+          <div class="well span3 sidebar">
+            <ul class="nav nav-list">
+              {% assign prevYear = 0 %}
+              {% for post in site.posts limit:10 %}
+              {% capture currYear %}{{ post.date | date: "%Y"}}{% endcapture %}
+              {% if currYear != prevYear and currYear != '2050' %}
+              <li class="nav-header">{{ currYear }}</li>
+              {% endif %}
+              <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+              {% assign prevYear = currYear %}
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="well span9">{{ content }}</div>
+        </div>
       </div>
     </div>
-    <div id="left">{{ content }}</div>
+    <div id="push"></div>
   </div>
-  <div id="cpyrght">
-    <div style='text-align: center'><p>Copyright &copy;<br /> Brian Reber, 2009 - {{ 'now' | date: "%Y" }}</p></div>
+</div>
+
+<div id="footer">
+  <div class="container">
+    <p>Copyright &copy;<br /> Brian Reber, 2009 - {{ 'now' | date: "%Y" }}</p>
   </div>
-  <div style="width: 100%; height: 1em; float: left">&nbsp;</div>
+</div>
+
 </body>
 </html>

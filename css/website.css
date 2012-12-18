@@ -1,121 +1,43 @@
-#wrapper {
+@media ( min-width :980px) {
+	.top-margin {
+		padding-top: 80px;
+	}
+	.container-fluid {
+		max-width: 1170px;
+	}
+}
+
+/* For the footer at the bottom of each page */
+html,body {
 	height: 100%;
-	display:table;
-	margin: 8px;
 }
 
-#right {
-	width: 250px;
-	display: table-cell;
+#wrap {
+	min-height: 100%;
+	height: auto !important;
 	height: 100%;
-	float: left;
+	margin: 0 auto -60px;
 }
 
-#left {
-	display: table-cell;
-	vertical-align: top;
-	height: 100%;
-	width: 100%;
-	padding: 0 15px 15px 15px;
-	border: 2px solid #4479D4;
-	background: #6A92D4;
+#push,#footer {
+	height: 60px;
 }
 
-a:link, a:visited, a:active {
-	text-decoration: none;
-	color: #052C6E;
+#footer {
+	background-color: #f5f5f5;
 }
 
-a:hover {
-	text-decoration: underline;
+#footer .container p {
+	margin: 20px 0;
 }
 
-body {
-	font-family: "Helvetica", Veranda, Sans-Serif;
-	margin: 0px;
-}
-
-.body {
-	background: #1049A9;
-}
-
-.head {
-	width: 250px;
-	display: inline-block;
-	background: #6A92D4;
-	-moz-border-radius: 10px 0 0 0;
-	border-radius: 0 0 10px 0;
-	margin-bottom: 5px;
-	border-right: 2px solid #4479D4;
-	border-bottom: 2px solid #4479D4;
-	text-align: center;
-}
-
-#social {
-	display: inline-block;
-	margin-bottom: 5px;
-	text-align: center;
-	vertical-align: middle;
-	padding-left: 25px;
-}
-
-#social a {
-	margin-right: 25px;
-}
-
-.imagecenter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	border: none;
-}
-
-img:hover {
-	-moz-box-shadow: 0 0 20px gray;
-	-webkit-box-shadow: 0 0 20px gray;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-}
-
-div {
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	margin-bottom: 0;
-}
-
-.center {
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	border: none;
-}
-
-nav a:link, nav a:visited, #cpyrght {
-	display: block;
-	font-size: 90%;
-	padding: 5px;
-	color: #6A92D4;
-	text-decoration: none;
-}
-
-nav a:hover {
-	-moz-box-shadow: 0 0 20px gray;
-	-webkit-box-shadow: 0 0 20px gray;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-}
-
-nav {
-	margin: 0;
-}
-
-.navbar * {
-	margin: 0;
-}
-
-.navbar ul {
-	list-style-type: none;
-	padding: 5px;
+@media ( max-width : 767px) {
+	#footer {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }
 
 .barrelRoll {
