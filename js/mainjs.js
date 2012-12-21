@@ -1,16 +1,16 @@
 // Switch to mobile view if the user agent indicates
 // they are on a mobile platform
-$().ready(function switchMobile() {
-	var uagent = navigator.userAgent.toLowerCase();
-
-	function checkBrowserMobile() {
-		return (uagent.search("iphone") > -1) || (uagent.search("ipod") > -1) || (uagent.search("android") > -1);
-	};
-    
-	if (checkBrowserMobile()) {
-		window.location = "http://m.brianreber.com";
-	}
-});
+// $().ready(function switchMobile() {
+// 	var uagent = navigator.userAgent.toLowerCase();
+//
+// 	function checkBrowserMobile() {
+// 		return (uagent.search("iphone") > -1) || (uagent.search("ipod") > -1) || (uagent.search("android") > -1);
+// 	};
+//
+// 	if (checkBrowserMobile()) {
+// 		window.location = "http://m.brianreber.com";
+// 	}
+// });
 
 // Set up the navigation bar
 $().ready(function(){
