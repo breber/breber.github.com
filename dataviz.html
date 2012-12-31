@@ -23,11 +23,11 @@
 </head>
 <body>
   <div id="ratingForm" class="modal hide">
-    <form action="http://apps.brianreber.com/apps/ratings" method="post">
-      <div class="modal-header">
-        <h3>Update Ratings</h3>
-      </div>
-      <div class="modal-body">
+    <div class="modal-header">
+      <h3>Update Ratings</h3>
+    </div>
+    <div class="modal-body">
+      <form action="http://apps.brianreber.com/apps/ratings" method="post" id="ratingsForm">
         <fieldset>
           <label for="appNameRating">App Name</label>
           <input type="text" name="appNameRating" id="appNameRating" class="text ui-widget-content ui-corner-all" />
@@ -42,20 +42,20 @@
           <label for="oneStar">One Star Ratings</label>
           <input type="text" name="oneStar" id="oneStar" value="" class="text ui-widget-content ui-corner-all" />
         </fieldset>
-      </div>
-      <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Close</a>
-        <input type="submit" class="btn btn-primary" id="submitRatings" />
-      </div>
-    </form>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Close</a>
+      <input type="submit" class="btn btn-primary" id="submitRatings" form="ratingsForm"/>
+    </div>
   </div>
 
   <div id="countForm" class="modal hide">
-    <form action="http://apps.brianreber.com/apps/counts" method="post">
-      <div class="modal-header">
-        <h3>Update Download Counts</h3>
-      </div>
-      <div class="modal-body">
+    <div class="modal-header">
+      <h3>Update Download Counts</h3>
+    </div>
+    <div class="modal-body">
+      <form action="http://apps.brianreber.com/apps/counts" method="post" id="countsForm">
         <fieldset>
           <label for="appNameCount">App Name</label>
           <input type="text" name="appNameCount" id="appNameCount" class="text ui-widget-content ui-corner-all" />
@@ -64,12 +64,12 @@
           <label for="activeDownloads">Active Downloads</label>
           <input type="text" name="activeDownloads" id="activeDownloads" value="" class="text ui-widget-content ui-corner-all" />
         </fieldset>
-      </div>
-      <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Close</a>
-        <input type="submit" class="btn btn-primary" id="submitDownloads" />
-      </div>
-    </form>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Close</a>
+      <input type="submit" class="btn btn-primary" id="submitDownloads" form="countsForm"/>
+    </div>
   </div>
 
   <table id="mTable"></table>
