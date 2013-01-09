@@ -43,7 +43,7 @@
             <ul class="nav nav-list">
               <li class="nav-header">Navigate</li>
               {% assign prevYear = 0 %}
-              {% for post in site.posts limit:10 %}
+              {% for post in site.posts limit:15 %}
               {% capture currYear %}{{ post.date | date: "%Y"}}{% endcapture %}
               {% if currYear != prevYear and currYear != '2050' %}
               <li class="nav-header">{{ currYear }}</li>
