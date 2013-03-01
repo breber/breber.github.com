@@ -22,7 +22,7 @@ summary: A list of languages I have experience with
     * CprE 288 - Created a C# UI that would communicate with a modified iRobot via Bluetooth
     * Thomson Reuters 2009, 2010
 * JavaScript (Thomson Reuters 2009, 2010)
-* jQuery (This website, [jQuery Minesweeper](/mines.html), [ePub Reader](http://epub.brianreber.com)
+* jQuery (This website, [jQuery Minesweeper](/mines.html), [ePub Reader](http://epub.brianreber.com))
 * XSLT (Thomson Reuters 2010, 2011)
 * Objective-C (CprE186 [iPhone Motion Unlock](https://github.com/breber/motion-unlock))
 * HTML
