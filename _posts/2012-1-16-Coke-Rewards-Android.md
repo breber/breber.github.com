@@ -24,8 +24,8 @@ Throughout this project, I have learned how to use many new technologies.
 * Google Analytics Android Library
 * AdMob Android Library
 
-**Source Code**: The source code for this app is available on [Github](https://github.com/breber/MyCokeRewards)
+**Source Code**: The source code for this app is available on [Github](https://github.com/breber/cokerewards)
 
-This app is available in the [Google Play Store](https://play.google.com/store/apps/details?id=com.brianreber.cokerewards). Feel free to download it, +1 it, and give it a great rating!
+This app was available on the [Google Play Store](https://play.google.com/store/apps/details?id=com.brianreber.cokerewards). Feel free to download it, +1 it, and give it a great rating!
 
 To date, this app has been downloaded over 40,000 times, and has helped users submit over 750,000 codes!
