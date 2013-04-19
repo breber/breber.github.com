@@ -16,16 +16,15 @@ summary: Google Analytics for Coke Rewards
 <!-- Load all libraries and run some JS code -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://cdn.brianreber.com/js/sprintf.js"></script>
-<script type="text/javascript" src="js/gadash-1.0.js"></script>
 <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=gadashInit"></script>
+<script type="text/javascript" src="js/gadash-1.0.js"></script>
 <script>
 var API_KEY = 'AIzaSyCaNON-QMTVbivCx6NUG_jCcQzsduouyGA';
 var CLIENT_ID = '558578181862-rnm2m6451vmhugfmd549ctbo5q26vt3a.apps.googleusercontent.com';
 var TABLE_ID = 'ga:55070743';
 
 var currentDate = new Date();
-var dateString = sprintf("%4d-%02d-%02d", currentDate.getFullYear(),
-            currentDate.getMonth() + 1, currentDate.getDate());
+var dateString = sprintf("%4d-%02d-%02d", currentDate.getFullYear(), currentDate.getMonth() + 1, currentDate.getDate());
 gadash.configKeys({
     'apiKey': API_KEY,
     'clientId': CLIENT_ID
@@ -72,4 +71,3 @@ $().ready(function() {
     document.getElementById('ui').style.display = 'block';
 });
 </script>
-
