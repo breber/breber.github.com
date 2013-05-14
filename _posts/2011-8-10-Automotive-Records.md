@@ -2,6 +2,7 @@
 layout: base
 title: Automotive Records
 summary: Information about my Automotive Records website
+tags: Java
 ---
 
 ## Android/Web Vehicle Log

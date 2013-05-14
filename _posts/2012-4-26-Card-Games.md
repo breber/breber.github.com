@@ -2,6 +2,7 @@
 layout: base
 title: Card Games for Android
 summary: Information about the Card Games for Android app
+tags: Java Objective-C
 ---
 
 ## Card Games for Android

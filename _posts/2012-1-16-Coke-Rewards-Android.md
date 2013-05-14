@@ -2,6 +2,7 @@
 layout: base
 title: Coke Rewards for Android
 summary: Information about my Coke Rewards for Android app
+tags: Java
 ---
 
 ## Coke Rewards for Android

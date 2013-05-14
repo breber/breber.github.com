@@ -2,6 +2,7 @@
 layout: base
 title: Twitter Picture Viewer for Android
 summary: Information about my Twitter Picture Viewer for Android app
+tags: Java
 ---
 
 ## Twitter Picture Viewer for Android
