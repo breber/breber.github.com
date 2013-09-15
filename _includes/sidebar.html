@@ -1,0 +1,17 @@
+<ul class="nav sidebar">
+  {% assign prevYear = 0 %}
+  {% for post in site.posts limit:15 %}
+  {% capture currYear %}{{ post.date | date: "%Y"}}{% endcapture %}
+  {% if currYear != prevYear %}
+  {% if prevYear != 0 %}
+    </ul>
+  </li>
+  {% endif %}
+  <li>
+    <a>{{ currYear }}</a>
+    <ul class="nav">
+  {% endif %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% assign prevYear = currYear %}
+  {% endfor %}
+</ul>

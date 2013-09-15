@@ -91,3 +91,7 @@ html,body {
 	-moz-transition:all 2s ease-in-out;
 	-moz-transform:rotate(360deg);
 }
+
+li > p {
+  margin-bottom: 0;
+}
